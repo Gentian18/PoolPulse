@@ -1,0 +1,124 @@
+# Huisstijl en huisregels
+
+**Project:** Zwemclubwebsite  
+**Team:** in te vullen  
+**Versie:** 1.0
+
+Dit document legt de afspraken vast voor de vormgeving, de code en de samenwerking binnen ons project. Alle teamleden volgen dezelfde afspraken, zodat de website één geheel vormt en de code overzichtelijk blijft.
+
+## 1. Huisstijl
+
+### Uitstraling
+
+De website krijgt een moderne, frisse en toegankelijke uitstraling die past bij een zwemclub. We baseren ons op de voorbeeldsite: een duidelijke navigatie, een opvallende hero-sectie, afgeronde kaarten en voldoende witruimte.
+
+Elke pagina moet herkenbaar deel uitmaken van dezelfde website. We gebruiken daarom overal dezelfde kleuren, lettertypes, knoppen en stijlen voor formulieren.
+
+### Kleuren
+
+We gebruiken een spectrum van blauwtinten, met wit als accent. De volgende kleuren uit de voorbeeldsite dienen als uitgangspunt:
+
+| Gebruik | Kleur | Kleurcode |
+|---|---|---|
+| Donkere achtergrond en belangrijke tekst | Donkerblauw | `#0B1F3B` |
+| Knoppen, links en actieve onderdelen | Helderblauw | `#1769E8` |
+| Lichte vlakken en achtergrond | Lichtblauw | `#EEF7FB` |
+| Achtergrond en accent | Wit | `#FFFFFF` |
+| Minder opvallende tekst | Blauwgrijs | `#60758A` |
+
+We zorgen ervoor dat tekst en knoppen goed leesbaar zijn tegen hun achtergrond. Kleur is nooit de enige manier om bijvoorbeeld een fout of status aan te geven.
+
+### Lettertype en tekst
+
+- We gebruiken **Arial**, met Helvetica en een schreefloos lettertype als terugval.
+- Titels zijn duidelijk groter en vetter dan de gewone tekst.
+- We schrijven korte, duidelijke teksten in het Nederlands.
+- Knoppen beschrijven de actie, bijvoorbeeld **“Aanmelden”**, **“Opslaan”** of **“Bekijk wedstrijden”**.
+
+### Pagina’s en onderdelen
+
+- De navigatie staat op elke pagina op dezelfde plaats en gebruikt dezelfde benamingen.
+- De homepage bevat een hero-sectie met een duidelijke titel, korte tekst en een knop om in te schrijven.
+- Kaarten, formulieren en knoppen krijgen afgeronde hoeken en voldoende ruimte.
+- De website moet bruikbaar zijn op mobiele telefoons, tablets en computers.
+- Formuliervelden hebben een zichtbaar label en duidelijke foutmeldingen.
+- Foto’s worden enkel gepubliceerd wanneer de betrokken personen daarvoor toestemming hebben gegeven.
+
+### Iconen
+
+We gebruiken **geen emoji’s** in de website. Waar een pictogram nuttig is, gebruiken we een icoon uit éénzelfde iconenset. Iconen hebben een consistente grootte en stijl. Een icoon dat op zichzelf een actie voorstelt, krijgt een duidelijke toegankelijke naam.
+
+## 2. Git en samenwerken
+
+### Branches
+
+- We pushen **nooit rechtstreeks naar `main`**.
+- We werken aan een taak op een eigen branch, bijvoorbeeld `feature/registratie` of `fix/login-validatie`.
+- We vertrekken voor gewone taken van de afgesproken ontwikkelbranch, bijvoorbeeld `develop`.
+- We voegen werk samen via een pull request. Ook wijzigingen naar `main` verlopen via een pull request en de afspraken van het team.
+- Als er een aparte `database`-branch is, stemmen we databasewijzigingen eerst af met het team.
+
+### Pull requests en commits
+
+- Een pull request heeft een duidelijke titel en beschrijft kort wat er veranderd is.
+- Minstens één ander teamlid kijkt de wijziging na voordat ze wordt samengevoegd.
+- We controleren of het project nog bouwt en of de aangepaste functie werkt.
+- We maken duidelijke, gerichte commits, bijvoorbeeld `Voeg validatie toe aan registratieformulier`.
+- We zetten geen wachtwoorden, API-sleutels of andere geheime gegevens in de repository.
+
+### Scrum-bord
+
+- Elke taak staat als issue op het gezamenlijke bord.
+- Een issue krijgt een duidelijke beschrijving, een verantwoordelijke en voorwaarden waaraan het resultaat moet voldoen.
+- We houden de status actueel: **Te doen**, **Bezig** of **Klaar**.
+- Is iemand geblokkeerd of lukt een taak niet binnen de sprint, dan meldt die persoon dat tijdig aan het team.
+
+## 3. Codeafspraken
+
+### Duidelijke namen en intentie
+
+De naam van een variabele, methode of klasse moet duidelijk maken waarvoor die dient.
+
+- Gebruik `swimmer`, `registrationDeadline` en `GetActiveSwimmers()` in plaats van `x`, `data` of `DoStuff()`.
+- Kies één taal voor namen in de code en gebruik die consequent. Ons voorstel is **Engels voor code** en **Nederlands voor teksten op de website**.
+- Gebruik in C# `PascalCase` voor klassen, methodes en publieke properties, en `camelCase` voor lokale variabelen en parameters.
+- Gebruik duidelijke namen voor booleans, bijvoorbeeld `isConfirmed` of `hasAvailablePlaces`.
+
+### Toegankelijkheid van code
+
+We maken velden en hulpmethodes **zoveel mogelijk `private`**. We gebruiken `public` wanneer iets van buiten de klasse toegankelijk moet zijn, bijvoorbeeld voor een controller, service, modelproperty of framework. We kiezen de toegang die past bij de functie en maken onderdelen niet onnodig openbaar.
+
+### Methoden en structuur
+
+- Eén methode heeft bij voorkeur één duidelijke verantwoordelijkheid.
+- We houden klassen en bestanden overzichtelijk en plaatsen code op een logische plek.
+- We vermijden dubbele code en halen gedeelde logica uit wanneer dat de code duidelijker maakt.
+- We laten geen ongebruikte code of tijdelijke testgegevens achter.
+- We volgen de bestaande structuur van het project en bespreken grotere wijzigingen vooraf met het team.
+
+### Commentaar
+
+- We schrijven **geen lange commentaarblokken** of overbodige uitleg bij vanzelfsprekende code.
+- Namen en een duidelijke structuur moeten de werking zoveel mogelijk zelf uitleggen.
+- Een korte commentaar is welkom wanneer die verklaart **waarom** een bijzondere keuze of regel nodig is.
+- Verouderde of uitgecommentarieerde code verwijderen we.
+
+## 4. Kwaliteit en beveiliging
+
+- We testen zowel het normale verloop als belangrijke foutgevallen.
+- Gebruikers krijgen alleen toegang tot gegevens en functies waarvoor ze bevoegd zijn.
+- We tonen duidelijke meldingen wanneer invoer ontbreekt of ongeldig is.
+- Belangrijke acties krijgen een passende bevestiging.
+- We behandelen persoonsgegevens zorgvuldig en delen ze niet onnodig.
+- We bespreken fouten en verbeterpunten respectvol en helpen elkaar bij het oplossen ervan.
+
+## 5. Wanneer is een taak klaar?
+
+Een taak is klaar wanneer:
+
+1. De afgesproken functionaliteit werkt en aan de acceptatiecriteria voldoet.
+2. De relevante foutgevallen zijn gecontroleerd.
+3. De code duidelijk en volgens deze afspraken geschreven is.
+4. Een ander teamlid de pull request heeft nagekeken.
+5. De wijziging is samengevoegd naar de afgesproken branch.
+6. Het Scrum-bord is bijgewerkt en de functie getoond kan worden tijdens de sprintreview.
