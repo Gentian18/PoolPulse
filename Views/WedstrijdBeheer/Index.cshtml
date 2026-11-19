@@ -1,0 +1,453 @@
+﻿@model List<Zwemclub.ViewModels.WedstrijdOverzichtViewModel>
+
+@{
+    ViewData["Title"] = "Wedstrijden beheren";
+}
+
+<style>
+    .wedstrijd-pagina {
+        max-width: 1050px;
+        margin: 35px auto 60px;
+        padding: 32px;
+        border: 1px solid #D8EAF2;
+        border-radius: 24px;
+        background: linear-gradient( 145deg, #E6F3FA 0%, #F1F8FB 55%, #E4F1F7 100% );
+        box-shadow: 0 18px 50px rgba(11, 31, 59, 0.08);
+        font-family: Arial, Helvetica, sans-serif;
+        color: #0B1F3B;
+    }
+
+    .wedstrijd-kruimelpad {
+        margin-bottom: 20px;
+        color: #60758A;
+        font-size: 13px;
+    }
+
+        .wedstrijd-kruimelpad strong {
+            color: #0B1F3B;
+        }
+
+    /* Bovenkant */
+
+    .wedstrijd-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 38px;
+        border-radius: 18px;
+        background: linear-gradient( 120deg, #0B1F3B 0%, #10345C 65%, #14537A 100% );
+        box-shadow: 0 14px 28px rgba(11, 31, 59, 0.18);
+        color: #FFFFFF;
+    }
+
+        .wedstrijd-hero::after {
+            content: "";
+            position: absolute;
+            right: -80px;
+            bottom: -190px;
+            width: 370px;
+            height: 370px;
+            border: 45px solid rgba(70, 226, 208, 0.08);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+    .wedstrijd-hero-inhoud {
+        position: relative;
+        z-index: 1;
+    }
+
+    .wedstrijd-label {
+        margin-bottom: 12px;
+        color: #46E2D0;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+    }
+
+    .wedstrijd-titel {
+        margin: 0 0 12px;
+        color: #FFFFFF;
+        font-size: 38px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        line-height: 1.1;
+    }
+
+    .wedstrijd-omschrijving {
+        max-width: 500px;
+        margin: 0;
+        color: #B9CEDD;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    /* Paneel */
+
+    .wedstrijd-paneel {
+        overflow: hidden;
+        margin-top: 22px;
+        border: 1px solid #DDEBF2;
+        border-radius: 16px;
+        background: #FFFFFF;
+        box-shadow: 0 12px 30px rgba(25, 69, 98, 0.09);
+    }
+
+    /* Zoeken */
+
+    .wedstrijd-zoekbalk {
+        padding: 25px;
+        border-bottom: 1px solid #EAF0F4;
+    }
+
+    .wedstrijd-zoekformulier {
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    .wedstrijd-zoekveld {
+        flex: 1;
+        max-width: 440px;
+    }
+
+        .wedstrijd-zoekveld label {
+            display: block;
+            margin-bottom: 8px;
+            color: #0B1F3B;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+    .wedstrijd-input {
+        width: 100%;
+        min-height: 44px;
+        padding: 10px 13px;
+        border: 1px solid #D6E3EB;
+        border-radius: 9px;
+        background: #FFFFFF;
+        color: #0B1F3B;
+    }
+
+        .wedstrijd-input:focus {
+            outline: 2px solid #A9CAF9;
+            border-color: #1769E8;
+        }
+
+    .wedstrijd-knop {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 18px;
+        border: 1px solid #1769E8;
+        border-radius: 9px;
+        background: #1769E8;
+        color: #FFFFFF;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+        .wedstrijd-knop:hover {
+            background: #1059CA;
+            color: #FFFFFF;
+        }
+
+    .wedstrijd-knop-licht {
+        border-color: #DCE6ED;
+        background: #FFFFFF;
+        color: #0B1F3B;
+    }
+
+        .wedstrijd-knop-licht:hover {
+            background: #EEF7FB;
+            color: #0B1F3B;
+        }
+
+    /* Titel boven de lijst */
+
+    .wedstrijd-overzicht-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        padding: 22px 25px;
+        border-bottom: 1px solid #EAF0F4;
+        background: #F3F9FC;
+    }
+
+        .wedstrijd-overzicht-header h2 {
+            margin: 0 0 5px;
+            color: #0B1F3B;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .wedstrijd-overzicht-header p {
+            margin: 0;
+            color: #60758A;
+            font-size: 13px;
+        }
+
+    .wedstrijd-aantal {
+        padding: 8px 12px;
+        border-radius: 20px;
+        background: #E1F0FF;
+        color: #1769E8;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    /* Wedstrijdrij */
+
+    .wedstrijd-rij {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 25px;
+        border-bottom: 1px solid #EDF2F5;
+    }
+
+        .wedstrijd-rij:last-child {
+            border-bottom: 0;
+        }
+
+        .wedstrijd-rij:hover {
+            background: #F3F9FD;
+        }
+
+    .wedstrijd-datum {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        width: 62px;
+        height: 62px;
+        border-radius: 12px;
+        background: #E7F3FC;
+        color: #1769E8;
+    }
+
+    .wedstrijd-dag {
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .wedstrijd-maand {
+        margin-top: 5px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .wedstrijd-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .wedstrijd-naam {
+        margin: 0 0 6px;
+        overflow-wrap: anywhere;
+        color: #0B1F3B;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    .wedstrijd-details {
+        margin: 0;
+        color: #60758A;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .wedstrijd-bekijken {
+        flex-shrink: 0;
+        min-height: 40px;
+        padding: 9px 15px;
+        border: 1px solid #D3E7FA;
+        border-radius: 9px;
+        background: #EAF4FF;
+        color: #1769E8;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+        .wedstrijd-bekijken:hover {
+            border-color: #AFCFF4;
+            background: #DCEEFF;
+            color: #1059CA;
+        }
+
+    .wedstrijd-leeg {
+        padding: 42px 25px;
+        color: #60758A;
+        text-align: center;
+    }
+
+        .wedstrijd-leeg strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #0B1F3B;
+        }
+
+    /* Gsm */
+
+    @@media (max-width: 600px) {
+        .wedstrijd-pagina {
+            margin: 20px auto 40px;
+            padding: 16px;
+        }
+
+        .wedstrijd-hero {
+            padding: 27px;
+        }
+
+        .wedstrijd-titel {
+            font-size: 30px;
+        }
+
+        .wedstrijd-zoekformulier {
+            align-items: stretch;
+            flex-direction: column;
+        }
+
+        .wedstrijd-zoekveld {
+            max-width: none;
+        }
+
+        .wedstrijd-knop {
+            width: 100%;
+        }
+
+        .wedstrijd-rij {
+            flex-wrap: wrap;
+        }
+
+        .wedstrijd-bekijken {
+            margin-left: 78px;
+        }
+    }
+</style>
+
+<div class="wedstrijd-pagina">
+    <div class="wedstrijd-kruimelpad">
+        Beheer / <strong>Wedstrijden</strong>
+    </div>
+
+    <div class="wedstrijd-hero">
+        <div class="wedstrijd-hero-inhoud">
+            <div class="wedstrijd-label">
+                Wedstrijdbeheer
+            </div>
+
+            <h1 class="wedstrijd-titel">
+                Wedstrijden beheren
+            </h1>
+
+            <p class="wedstrijd-omschrijving">
+                Bekijk en zoek de wedstrijden van je zwemclub.
+            </p>
+        </div>
+    </div>
+
+    <div class="wedstrijd-paneel">
+        <div class="wedstrijd-zoekbalk">
+            <form asp-controller="WedstrijdBeheer"
+                  asp-action="Index"
+                  method="get"
+                  class="wedstrijd-zoekformulier">
+
+                <div class="wedstrijd-zoekveld">
+                    <label for="zoekterm">
+                        Zoeken op naam
+                    </label>
+
+                    <input id="zoekterm"
+                           name="zoekterm"
+                           class="wedstrijd-input"
+                           value="@ViewData["Zoekterm"]"
+                           placeholder="Zoek een wedstrijd..." />
+                </div>
+
+                <button type="submit" class="wedstrijd-knop">
+                    Zoeken
+                </button>
+
+                <a asp-controller="WedstrijdBeheer"
+                   asp-action="Index"
+                   class="wedstrijd-knop wedstrijd-knop-licht">
+                    Alles tonen
+                </a>
+            </form>
+        </div>
+
+        <div class="wedstrijd-overzicht-header">
+            <div>
+                <h2>Alle wedstrijden</h2>
+                <p>Gesorteerd op datum</p>
+            </div>
+
+            <span class="wedstrijd-aantal">
+                @Model.Count
+                @if (Model.Count == 1)
+                {
+                    <text>wedstrijd</text>
+                }
+                else
+                {
+                    <text>wedstrijden</text>
+                }
+            </span>
+        </div>
+
+        @if (Model.Count == 0)
+        {
+            <div class="wedstrijd-leeg">
+                <strong>Geen wedstrijden gevonden</strong>
+                <span>Probeer een andere zoekterm.</span>
+            </div>
+        }
+        else
+        {
+            @foreach (var wedstrijd in Model)
+            {
+                <div class="wedstrijd-rij">
+                    <div class="wedstrijd-datum">
+                        <span class="wedstrijd-dag">
+                            @wedstrijd.Datum.ToString("dd")
+                        </span>
+
+                        <span class="wedstrijd-maand">
+                            @wedstrijd.Datum.ToString("MMM")
+                        </span>
+                    </div>
+
+                    <div class="wedstrijd-info">
+                        <h3 class="wedstrijd-naam">
+                            @wedstrijd.Naam
+                        </h3>
+
+                        <p class="wedstrijd-details">
+                            @wedstrijd.Datum.ToString("dd/MM/yyyy")
+                            · @wedstrijd.Locatie
+                        </p>
+                    </div>
+
+                    <a asp-controller="WedstrijdBeheer"
+                       asp-action="Details"
+                       asp-route-id="@wedstrijd.Id"
+                       class="wedstrijd-bekijken">
+                        Bekijken →
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>
