@@ -1,3 +1,5 @@
+using Zwemclub.Data.Repository.Interfaces;
+
 namespace Zwemclub.Data.UnitOfWork
 {
     public interface IUnitOfWork
