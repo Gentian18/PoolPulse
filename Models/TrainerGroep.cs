@@ -1,6 +1,6 @@
 namespace Zwemclub.Models
 {
-    public class TrainerGroep
+    public class TrainerGroep:IModel
     {
         public int Id { get; set; }
 

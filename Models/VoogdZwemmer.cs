@@ -1,6 +1,6 @@
 namespace Zwemclub.Models
 {
-    public class VoogdZwemmer
+    public class VoogdZwemmer:IModel
     {
         public int Id { get; set; }
 

@@ -1,6 +1,6 @@
 namespace Zwemclub.Models
 {
-    public class InschrijvingWedstrijd
+    public class InschrijvingWedstrijd:IModel
     {
         public int Id { get; set; }
 

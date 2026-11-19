@@ -1,6 +1,6 @@
 namespace Zwemclub.Models
 {
-    public class Mail
+    public class Mail:IModel
     {
         public int Id { get; set; }
 

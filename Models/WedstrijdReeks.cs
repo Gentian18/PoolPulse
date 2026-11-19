@@ -1,6 +1,6 @@
 namespace Zwemclub.Models
 {
-    public class WedstrijdReeks
+    public class WedstrijdReeks:IModel
     {
         public int Id { get; set; }
 

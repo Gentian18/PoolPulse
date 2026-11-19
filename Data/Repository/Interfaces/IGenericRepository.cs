@@ -1,10 +1,10 @@
 namespace Zwemclub.Data.Repository.Interfaces
 {
-    public interface IGenericRepository<T> where T : IModel
+    public interface IGenericRepository<T> where T : class, IModel
     {
         Task<List<T>> GetAllAsync();
 
-        Task<T> GetByIdAsync(int id);
+        Task<T?> GetByIdAsync(int id);
 
         void Add(T model);
 
