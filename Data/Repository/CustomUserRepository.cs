@@ -2,46 +2,48 @@
 
 namespace Zwemclub.Data.Repository
 {
-    public class CustomUserRepository : GenericRepository<CustomUser>, ICustomUserRepository
+    public class CustomUserRepository : ICustomUserRepository
     {
-        public CustomUserRepository(ZwemclubContext zwemclubContext): base(zwemclubContext)
+        private readonly ZwemclubContext _context;
+
+        public CustomUserRepository(ZwemclubContext context)
         {
-            
+            _context = context;
         }
 
-        public void Add(CustomUser model)
+        public async Task<List<CustomUser>> GetAllAsync()
         {
-            throw new NotImplementedException();
+            return await _context.Set<CustomUser>().ToListAsync();
         }
 
-        public void Delete(CustomUser model)
+        public async Task<CustomUser?> GetByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            return await _context.Set<CustomUser>().FindAsync(id);
         }
 
-        public Task<bool> ExistsAsync(int id)
+        public void Add(CustomUser user)
         {
-            throw new NotImplementedException();
+            _context.Set<CustomUser>().Add(user);
         }
 
-        public Task<List<CustomUser>> GetAllAsync()
+        public void Update(CustomUser user)
         {
-            throw new NotImplementedException();
+            _context.Set<CustomUser>().Update(user);
         }
 
-        public Task<CustomUser> GetByIdAsync(int id)
+        public void Delete(CustomUser user)
         {
-            throw new NotImplementedException();
+            _context.Set<CustomUser>().Remove(user);
         }
 
-        public void RemoveRange(List<CustomUser> entities)
+        public async Task<bool> ExistsAsync(string id)
         {
-            throw new NotImplementedException();
+            return await GetByIdAsync(id) != null;
         }
 
-        public void Update(CustomUser model)
+        public void RemoveRange(List<CustomUser> users)
         {
-            throw new NotImplementedException();
+            _context.Set<CustomUser>().RemoveRange(users);
         }
     }
 }

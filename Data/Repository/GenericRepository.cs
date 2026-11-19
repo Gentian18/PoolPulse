@@ -4,46 +4,46 @@ namespace Zwemclub.Data.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class, IModel
     {
-        protected ZwemclubContext _context;
+        protected readonly ZwemclubContext _context;
 
-        public GenericRepository(ZwemclubContext zwemclubContext)
+        public GenericRepository(ZwemclubContext context)
         {
-            _context = zwemclubContext;
+            _context = context;
+        }
+
+        public async Task<List<T>> GetAllAsync()
+        {
+            return await _context.Set<T>().ToListAsync();
+        }
+
+        public async Task<T?> GetByIdAsync(int id)
+        {
+            return await _context.Set<T>().FindAsync(id);
         }
 
         public void Add(T model)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Delete(T model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> ExistsAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<T>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<T> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveRange(List<T> entities)
-        {
-            throw new NotImplementedException();
+            _context.Set<T>().Add(model);
         }
 
         public void Update(T model)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(model);
+        }
+
+        public void Delete(T model)
+        {
+            _context.Set<T>().Remove(model);
+        }
+
+        public async Task<bool> ExistsAsync(int id)
+        {
+            return await GetByIdAsync(id) != null;
+        }
+
+        public void RemoveRange(List<T> entities)
+        {
+            _context.Set<T>().RemoveRange(entities);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Zwemclub.Data.UnitOfWork
 {
     public class UnitOfWork(ZwemclubContext context) : IUnitOfWork
     {
-        private IGenericRepository<CustomUser>? gebruikers;
+        private ICustomUserRepository? gebruikers;
         private IGenericRepository<GebruikerCarpool>? gebruikerCarpools;
         private IGenericRepository<Parameter>? parameters;
         private IGenericRepository<TrainerGroep>? trainerGroepen;
@@ -18,8 +18,8 @@ namespace Zwemclub.Data.UnitOfWork
         private IGenericRepository<Geslacht>? geslachten;
         private IGenericRepository<Wedstrijd>? wedstrijden;
 
-        public IGenericRepository<CustomUser> Gebruikers =>
-            gebruikers ??= new GenericRepository<CustomUser>(context);
+        public ICustomUserRepository Gebruikers =>
+        gebruikers ??= new CustomUserRepository(context);
 
         public IGenericRepository<GebruikerCarpool> GebruikerCarpools =>
             gebruikerCarpools ??= new GenericRepository<GebruikerCarpool>(context);

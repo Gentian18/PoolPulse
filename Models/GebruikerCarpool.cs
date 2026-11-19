@@ -1,6 +1,6 @@
 namespace Zwemclub.Models
 {
-    public class GebruikerCarpool
+    public class GebruikerCarpool:IModel
     {
         public int Id { get; set; }
 

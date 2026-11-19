@@ -1,6 +1,6 @@
 namespace Zwemclub.Models
 {
-    public class ReeksType
+    public class ReeksType:IModel
     {
         public int Id { get; set; }
 

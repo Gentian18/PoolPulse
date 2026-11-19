@@ -1,6 +1,6 @@
 namespace Zwemclub.Models
 {
-    public class Parameter
+    public class Parameter:IModel
     {
         public int Id { get; set; }
 

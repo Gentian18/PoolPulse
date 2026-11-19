@@ -1,6 +1,6 @@
 namespace Zwemclub.Models
 {
-    public class Geslacht
+    public class Geslacht : IModel
     {
         public int Id { get; set; }
 
