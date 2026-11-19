@@ -1,41 +1,49 @@
+using Zwemclub.Data.Repository.Interfaces;
+
 namespace Zwemclub.Data.Repository
 {
-    public class GenericRepository<TEntity>(ZwemclubContext context) : IGenericRepository<TEntity>
-        where TEntity : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class, IModel
     {
-        public async Task<IEnumerable<TEntity>> GetAllAsync()
+        protected ZwemclubContext _context;
+
+        public GenericRepository(ZwemclubContext zwemclubContext)
         {
-            return await context.Set<TEntity>().ToListAsync();
+            _context = zwemclubContext;
         }
 
-        public async Task<TEntity?> GetByIdAsync<TId>(TId id) where TId : notnull
+        public void Add(T model)
         {
-            return await context.Set<TEntity>().FindAsync(id);
+            throw new NotImplementedException();
         }
 
-        public async Task AddAsync(TEntity entity)
+        public void Delete(T model)
         {
-            await context.Set<TEntity>().AddAsync(entity);
+            throw new NotImplementedException();
         }
 
-        public void Update(TEntity entity)
+        public Task<bool> ExistsAsync(int id)
         {
-            context.Set<TEntity>().Update(entity);
+            throw new NotImplementedException();
         }
 
-        public void Delete(TEntity entity)
+        public Task<List<T>> GetAllAsync()
         {
-            context.Set<TEntity>().Remove(entity);
+            throw new NotImplementedException();
         }
 
-        public async Task<bool> ExistsAsync<TId>(TId id) where TId : notnull
+        public Task<T> GetByIdAsync(int id)
         {
-            return await context.Set<TEntity>().FindAsync(id) != null;
+            throw new NotImplementedException();
         }
 
-        public void RemoveRange(List<TEntity> entities)
+        public void RemoveRange(List<T> entities)
         {
-            context.Set<TEntity>().RemoveRange(entities);
+            throw new NotImplementedException();
+        }
+
+        public void Update(T model)
+        {
+            throw new NotImplementedException();
         }
     }
 }
