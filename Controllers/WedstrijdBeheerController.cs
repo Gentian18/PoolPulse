@@ -1,9 +1,10 @@
 ﻿
 using Zwemclub.ViewModels;
+using Zwemclub.Models;
 
 namespace Zwemclub.Controllers
 {
-    [Authorize(Roles = "Voorzitter")]
+    //[Authorize(Roles = "Voorzitter")]
     public class WedstrijdBeheerController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -67,6 +68,54 @@ namespace Zwemclub.Controllers
             ViewData["Plaats"] = plaats;
 
             return View(wedstrijd);
+        }
+
+        [HttpGet]
+        public IActionResult Toevoegen()
+        {
+            var formulier = new WedstrijdToevoegenViewModel();
+
+            return View(formulier);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Toevoegen(
+            WedstrijdToevoegenViewModel formulier)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(formulier);
+            }
+
+            if (formulier.Datum == null || formulier.DeadlineInschrijven == null)
+            {
+                return View(formulier);
+            }
+
+            var plaats = new Plaats
+            {
+                Naam = formulier.PlaatsNaam,
+                Straat = formulier.Straat,
+                HuisNummer = formulier.HuisNummer,
+                Postcode = formulier.Postcode,
+                Gemeente = formulier.Gemeente,
+                Land = formulier.Land
+            };
+
+            var wedstrijd = new Wedstrijd
+            {
+                Naam = formulier.Naam,
+                Datum = formulier.Datum.Value,
+                DeadlineInschrijven = formulier.DeadlineInschrijven.Value,
+                UrlWedstrijd = formulier.UrlWedstrijd,
+                Plaats = plaats
+            };
+
+            _unitOfWork.Wedstrijden.Add(wedstrijd);
+
+            await _unitOfWork.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
     }
 }

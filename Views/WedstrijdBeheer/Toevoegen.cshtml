@@ -1,0 +1,382 @@
+﻿@model Zwemclub.ViewModels.WedstrijdToevoegenViewModel
+
+@{
+    ViewData["Title"] = "Wedstrijd toevoegen";
+}
+
+<style>
+    .toevoegen-pagina {
+        max-width: 1050px;
+        margin: 35px auto 60px;
+        padding: 32px;
+        border: 1px solid #D8EAF2;
+        border-radius: 24px;
+        background: linear-gradient( 145deg, #E6F3FA 0%, #F1F8FB 55%, #E4F1F7 100% );
+        box-shadow: 0 18px 50px rgba(11, 31, 59, 0.08);
+        font-family: Arial, Helvetica, sans-serif;
+        color: #0B1F3B;
+    }
+
+    .toevoegen-kruimelpad {
+        margin-bottom: 20px;
+        color: #60758A;
+        font-size: 13px;
+    }
+
+    .toevoegen-hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 38px;
+        border-radius: 18px;
+        background: linear-gradient( 120deg, #0B1F3B 0%, #10345C 65%, #14537A 100% );
+        box-shadow: 0 14px 28px rgba(11, 31, 59, 0.18);
+        color: #FFFFFF;
+    }
+
+    .toevoegen-label {
+        margin-bottom: 12px;
+        color: #46E2D0;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+    }
+
+    .toevoegen-titel {
+        margin: 0 0 12px;
+        color: #FFFFFF;
+        font-size: 38px;
+        font-weight: 700;
+        letter-spacing: -1px;
+    }
+
+    .toevoegen-ondertitel {
+        margin: 0;
+        color: #B9CEDD;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .toevoegen-terug {
+        flex-shrink: 0;
+        padding: 12px 17px;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 9px;
+        background: rgba(255, 255, 255, 0.08);
+        color: #FFFFFF;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+        .toevoegen-terug:hover {
+            border-color: #46E2D0;
+            color: #FFFFFF;
+        }
+
+    .toevoegen-formulier {
+        overflow: hidden;
+        margin-top: 22px;
+        border: 1px solid #DDEBF2;
+        border-radius: 16px;
+        background: #FFFFFF;
+        box-shadow: 0 12px 30px rgba(25, 69, 98, 0.09);
+    }
+
+    .toevoegen-sectie {
+        padding: 28px;
+    }
+
+        .toevoegen-sectie + .toevoegen-sectie {
+            border-top: 1px solid #EAF0F4;
+        }
+
+    .toevoegen-sectie-header {
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        margin-bottom: 24px;
+    }
+
+    .toevoegen-nummer {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: #EAF4FF;
+        color: #1769E8;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .toevoegen-sectie-header h2 {
+        margin: 0 0 4px;
+        font-size: 17px;
+        font-weight: 700;
+    }
+
+    .toevoegen-sectie-header p {
+        margin: 0;
+        color: #60758A;
+        font-size: 12px;
+    }
+
+    .toevoegen-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+    }
+
+    .toevoegen-veld {
+        margin-bottom: 18px;
+    }
+
+        .toevoegen-veld label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .toevoegen-veld input {
+            width: 100%;
+            min-height: 45px;
+            padding: 11px 13px;
+            border: 1px solid #D6E3EB;
+            border-radius: 9px;
+            background: #FFFFFF;
+            color: #0B1F3B;
+        }
+
+            .toevoegen-veld input:focus {
+                outline: 2px solid #A9CAF9;
+                border-color: #1769E8;
+            }
+
+    .toevoegen-fout {
+        display: block;
+        margin-top: 6px;
+        color: #B42318;
+        font-size: 12px;
+    }
+
+    .toevoegen-acties {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+        padding: 22px 28px;
+        border-top: 1px solid #EAF0F4;
+        background: #F8FBFD;
+    }
+
+    .toevoegen-knop {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 18px;
+        border: 1px solid #1769E8;
+        border-radius: 9px;
+        background: #1769E8;
+        color: #FFFFFF;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+        .toevoegen-knop:hover {
+            background: #1059CA;
+            color: #FFFFFF;
+        }
+
+    .toevoegen-knop-licht {
+        border-color: #DCE6ED;
+        background: #FFFFFF;
+        color: #0B1F3B;
+    }
+
+        .toevoegen-knop-licht:hover {
+            background: #EEF7FB;
+            color: #0B1F3B;
+        }
+
+    @@media (max-width: 600px) {
+        .toevoegen-pagina {
+            margin: 20px auto 40px;
+            padding: 16px;
+        }
+
+        .toevoegen-hero {
+            flex-direction: column;
+            padding: 27px;
+        }
+
+        .toevoegen-titel {
+            font-size: 30px;
+        }
+
+        .toevoegen-grid {
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .toevoegen-sectie {
+            padding: 22px;
+        }
+
+        .toevoegen-acties {
+            flex-direction: column;
+            padding: 20px 22px;
+        }
+    }
+</style>
+
+<div class="toevoegen-pagina">
+    <div class="toevoegen-kruimelpad">
+        Beheer / Wedstrijden / <strong>Toevoegen</strong>
+    </div>
+
+    <div class="toevoegen-hero">
+        <div>
+            <div class="toevoegen-label">Wedstrijdbeheer</div>
+
+            <h1 class="toevoegen-titel">
+                Wedstrijd toevoegen
+            </h1>
+
+            <p class="toevoegen-ondertitel">
+                Vul de wedstrijdgegevens en de locatie in.
+            </p>
+        </div>
+
+        <a asp-controller="WedstrijdBeheer"
+           asp-action="Index"
+           class="toevoegen-terug">
+            ← Terug naar overzicht
+        </a>
+    </div>
+
+    <form asp-controller="WedstrijdBeheer"
+          asp-action="Toevoegen"
+          method="post"
+          class="toevoegen-formulier">
+
+        <section class="toevoegen-sectie">
+            <div class="toevoegen-sectie-header">
+                <div class="toevoegen-nummer">01</div>
+
+                <div>
+                    <h2>Wedstrijdgegevens</h2>
+                    <p>De belangrijkste informatie over de wedstrijd.</p>
+                </div>
+            </div>
+
+            <div class="toevoegen-veld">
+                <label asp-for="Naam"></label>
+                <input asp-for="Naam" placeholder="Bijv. Zomermeeting" />
+                <span asp-validation-for="Naam" class="toevoegen-fout"></span>
+            </div>
+
+            <div class="toevoegen-grid">
+                <div class="toevoegen-veld">
+                    <label asp-for="Datum"></label>
+                    <input asp-for="Datum" type="date" />
+                    <span asp-validation-for="Datum" class="toevoegen-fout"></span>
+                </div>
+
+                <div class="toevoegen-veld">
+                    <label asp-for="DeadlineInschrijven"></label>
+                    <input asp-for="DeadlineInschrijven" type="datetime-local" />
+                    <span asp-validation-for="DeadlineInschrijven"
+                          class="toevoegen-fout"></span>
+                </div>
+            </div>
+
+            <div class="toevoegen-veld">
+                <label asp-for="UrlWedstrijd"></label>
+                <input asp-for="UrlWedstrijd"
+                       type="url"
+                       placeholder="https://voorbeeld.be/wedstrijd" />
+                <span asp-validation-for="UrlWedstrijd"
+                      class="toevoegen-fout"></span>
+            </div>
+        </section>
+
+        <section class="toevoegen-sectie">
+            <div class="toevoegen-sectie-header">
+                <div class="toevoegen-nummer">02</div>
+
+                <div>
+                    <h2>Locatie</h2>
+                    <p>Waar vindt de wedstrijd plaats?</p>
+                </div>
+            </div>
+
+            <div class="toevoegen-veld">
+                <label asp-for="PlaatsNaam"></label>
+                <input asp-for="PlaatsNaam" placeholder="Bijv. Sportoase Leuven" />
+                <span asp-validation-for="PlaatsNaam"
+                      class="toevoegen-fout"></span>
+            </div>
+
+            <div class="toevoegen-grid">
+                <div class="toevoegen-veld">
+                    <label asp-for="Straat"></label>
+                    <input asp-for="Straat" placeholder="Bijv. Philipssite" />
+                    <span asp-validation-for="Straat"
+                          class="toevoegen-fout"></span>
+                </div>
+
+                <div class="toevoegen-veld">
+                    <label asp-for="HuisNummer"></label>
+                    <input asp-for="HuisNummer" placeholder="Bijv. 6" />
+                    <span asp-validation-for="HuisNummer"
+                          class="toevoegen-fout"></span>
+                </div>
+            </div>
+
+            <div class="toevoegen-grid">
+                <div class="toevoegen-veld">
+                    <label asp-for="Postcode"></label>
+                    <input asp-for="Postcode" placeholder="Bijv. 3001" />
+                    <span asp-validation-for="Postcode"
+                          class="toevoegen-fout"></span>
+                </div>
+
+                <div class="toevoegen-veld">
+                    <label asp-for="Gemeente"></label>
+                    <input asp-for="Gemeente" placeholder="Bijv. Leuven" />
+                    <span asp-validation-for="Gemeente"
+                          class="toevoegen-fout"></span>
+                </div>
+            </div>
+
+            <div class="toevoegen-veld">
+                <label asp-for="Land"></label>
+                <input asp-for="Land" />
+                <span asp-validation-for="Land" class="toevoegen-fout"></span>
+            </div>
+        </section>
+
+        <div class="toevoegen-acties">
+            <a asp-controller="WedstrijdBeheer"
+               asp-action="Index"
+               class="toevoegen-knop toevoegen-knop-licht">
+                Annuleren
+            </a>
+
+            <button type="submit" class="toevoegen-knop">
+                Wedstrijd toevoegen
+            </button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
