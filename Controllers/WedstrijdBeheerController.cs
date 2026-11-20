@@ -14,35 +14,56 @@ namespace Zwemclub.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<IActionResult> Index(string? zoekterm)
+        public async Task<IActionResult> Index(string? zoekterm, int? jaar)
         {
             var wedstrijden = await _unitOfWork.Wedstrijden.GetAllAsync();
             var plaatsen = await _unitOfWork.Plaatsen.GetAllAsync();
 
-            var plaatsenPerId = plaatsen.ToDictionary(plaats => plaats.Id);
+            var overzicht = new List<WedstrijdOverzichtViewModel>();
 
-            var overzicht = wedstrijden
-                .Where(wedstrijd => !wedstrijd.IsVerwijderd)
-                .Where(wedstrijd =>
-                    string.IsNullOrWhiteSpace(zoekterm)
-                    || wedstrijd.Naam.Contains(
+            foreach (var wedstrijd in wedstrijden)
+            {
+                if (wedstrijd.IsVerwijderd)
+                {
+                    continue;
+                }
+
+                if (jaar.HasValue && wedstrijd.Datum.Year != jaar.Value)
+                {
+                    continue;
+                }
+
+                if (!string.IsNullOrWhiteSpace(zoekterm) &&
+                    !wedstrijd.Naam.Contains(
                         zoekterm.Trim(),
                         StringComparison.OrdinalIgnoreCase))
-                .OrderBy(wedstrijd => wedstrijd.Datum)
-                .Select(wedstrijd => new WedstrijdOverzichtViewModel
+                {
+                    continue;
+                }
+
+                var plaats = plaatsen.Find(p => p.Id == wedstrijd.PlaatsId);
+                var locatie = "Locatie niet gevonden";
+
+                if (plaats != null)
+                {
+                    locatie = plaats.Gemeente;
+                }
+
+                var wedstrijdVoorOverzicht = new WedstrijdOverzichtViewModel
                 {
                     Id = wedstrijd.Id,
                     Naam = wedstrijd.Naam,
                     Datum = wedstrijd.Datum,
-                    Locatie = plaatsenPerId.TryGetValue(
-                        wedstrijd.PlaatsId,
-                        out var plaats)
-                        ? plaats.Gemeente
-                        : "Locatie niet gevonden"
-                })
-                .ToList();
+                    Locatie = locatie
+                };
+
+                overzicht.Add(wedstrijdVoorOverzicht);
+            }
+
+            overzicht = overzicht.OrderBy(wedstrijd => wedstrijd.Datum).ToList();
 
             ViewData["Zoekterm"] = zoekterm;
+            ViewData["Jaar"] = jaar;
 
             return View(overzicht);
         }

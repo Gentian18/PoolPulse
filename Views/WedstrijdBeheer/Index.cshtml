@@ -7,8 +7,8 @@
 <style>
     .wedstrijd-pagina {
         max-width: 1050px;
-        margin: 35px auto 60px;
-        padding: 32px;
+        margin: 16px auto 24px;
+        padding: 20px;
         border: 1px solid #D8EAF2;
         border-radius: 24px;
         background: linear-gradient( 145deg, #E6F3FA 0%, #F1F8FB 55%, #E4F1F7 100% );
@@ -18,7 +18,7 @@
     }
 
     .wedstrijd-kruimelpad {
-        margin-bottom: 20px;
+        margin-bottom: 12px;
         color: #60758A;
         font-size: 13px;
     }
@@ -32,7 +32,7 @@
     .wedstrijd-hero {
         position: relative;
         overflow: hidden;
-        padding: 38px;
+        padding: 24px 30px;
         border-radius: 18px;
         background: linear-gradient( 120deg, #0B1F3B 0%, #10345C 65%, #14537A 100% );
         box-shadow: 0 14px 28px rgba(11, 31, 59, 0.18);
@@ -54,10 +54,14 @@
     .wedstrijd-hero-inhoud {
         position: relative;
         z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
     }
 
     .wedstrijd-label {
-        margin-bottom: 12px;
+        margin-bottom: 7px;
         color: #46E2D0;
         font-size: 11px;
         font-weight: 700;
@@ -66,73 +70,22 @@
     }
 
     .wedstrijd-titel {
-        margin: 0 0 12px;
+        margin: 0 0 6px;
         color: #FFFFFF;
-        font-size: 38px;
+        font-size: 32px;
         font-weight: 700;
         letter-spacing: -1px;
         line-height: 1.1;
     }
 
     .wedstrijd-omschrijving {
-        max-width: 500px;
         margin: 0;
         color: #B9CEDD;
         font-size: 15px;
         line-height: 1.6;
     }
 
-    /* Paneel */
-
-    .wedstrijd-paneel {
-        overflow: hidden;
-        margin-top: 22px;
-        border: 1px solid #DDEBF2;
-        border-radius: 16px;
-        background: #FFFFFF;
-        box-shadow: 0 12px 30px rgba(25, 69, 98, 0.09);
-    }
-
-    /* Zoeken */
-
-    .wedstrijd-zoekbalk {
-        padding: 25px;
-        border-bottom: 1px solid #EAF0F4;
-    }
-
-    .wedstrijd-zoekformulier {
-        display: flex;
-        align-items: flex-end;
-        gap: 10px;
-    }
-
-    .wedstrijd-zoekveld {
-        flex: 1;
-        max-width: 440px;
-    }
-
-        .wedstrijd-zoekveld label {
-            display: block;
-            margin-bottom: 8px;
-            color: #0B1F3B;
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-    .wedstrijd-input {
-        width: 100%;
-        min-height: 44px;
-        padding: 10px 13px;
-        border: 1px solid #D6E3EB;
-        border-radius: 9px;
-        background: #FFFFFF;
-        color: #0B1F3B;
-    }
-
-        .wedstrijd-input:focus {
-            outline: 2px solid #A9CAF9;
-            border-color: #1769E8;
-        }
+    /* Knoppen */
 
     .wedstrijd-knop {
         display: inline-flex;
@@ -167,21 +120,69 @@
             color: #0B1F3B;
         }
 
-    /* Titel boven de lijst */
+    /* Overzicht en zoeken */
+
+    .wedstrijd-paneel {
+        overflow: hidden;
+        margin-top: 16px;
+        border: 1px solid #DDEBF2;
+        border-radius: 16px;
+        background: #FFFFFF;
+        box-shadow: 0 12px 30px rgba(25, 69, 98, 0.09);
+    }
+
+    .wedstrijd-zoekbalk {
+        padding: 17px 24px;
+        border-bottom: 1px solid #EAF0F4;
+    }
+
+    .wedstrijd-zoekformulier {
+        display: flex;
+        align-items: flex-end;
+        gap: 10px;
+    }
+
+    .wedstrijd-zoekveld {
+        flex: 1;
+        min-width: 0;
+        max-width: 440px;
+    }
+
+        .wedstrijd-zoekveld label {
+            display: block;
+            margin-bottom: 8px;
+            color: #0B1F3B;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+    .wedstrijd-input {
+        width: 100%;
+        min-height: 44px;
+        padding: 10px 13px;
+        border: 1px solid #D6E3EB;
+        border-radius: 9px;
+        background: #FFFFFF;
+        color: #0B1F3B;
+    }
+
+        .wedstrijd-input:focus {
+            outline: 2px solid #A9CAF9;
+            border-color: #1769E8;
+        }
 
     .wedstrijd-overzicht-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         gap: 15px;
-        padding: 22px 25px;
+        padding: 14px 24px;
         border-bottom: 1px solid #EAF0F4;
         background: #F3F9FC;
     }
 
         .wedstrijd-overzicht-header h2 {
             margin: 0 0 5px;
-            color: #0B1F3B;
             font-size: 17px;
             font-weight: 700;
         }
@@ -208,7 +209,7 @@
         display: flex;
         align-items: center;
         gap: 16px;
-        padding: 18px 25px;
+        padding: 12px 24px;
         border-bottom: 1px solid #EDF2F5;
     }
 
@@ -268,6 +269,8 @@
 
     .wedstrijd-bekijken {
         flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
         min-height: 40px;
         padding: 9px 15px;
         border: 1px solid #D3E7FA;
@@ -277,6 +280,7 @@
         font-size: 13px;
         font-weight: 700;
         text-decoration: none;
+        white-space: nowrap;
     }
 
         .wedstrijd-bekijken:hover {
@@ -301,16 +305,22 @@
 
     @@media (max-width: 600px) {
         .wedstrijd-pagina {
-            margin: 20px auto 40px;
-            padding: 16px;
+            margin: 12px auto 24px;
+            padding: 14px;
         }
 
         .wedstrijd-hero {
-            padding: 27px;
+            padding: 22px;
+        }
+
+        .wedstrijd-hero-inhoud {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
         }
 
         .wedstrijd-titel {
-            font-size: 30px;
+            font-size: 27px;
         }
 
         .wedstrijd-zoekformulier {
@@ -324,6 +334,13 @@
 
         .wedstrijd-knop {
             width: 100%;
+        }
+
+        .wedstrijd-zoekbalk,
+        .wedstrijd-overzicht-header,
+        .wedstrijd-rij {
+            padding-left: 18px;
+            padding-right: 18px;
         }
 
         .wedstrijd-rij {
@@ -343,22 +360,23 @@
 
     <div class="wedstrijd-hero">
         <div class="wedstrijd-hero-inhoud">
-            <div class="wedstrijd-label">
-                Wedstrijdbeheer
+            <div>
+                <div class="wedstrijd-label">
+                    Wedstrijdbeheer
+                </div>
+
+                <h1 class="wedstrijd-titel">
+                    Wedstrijden beheren
+                </h1>
+
+                <p class="wedstrijd-omschrijving">
+                    Bekijk en zoek de wedstrijden van je zwemclub.
+                </p>
             </div>
-
-            <h1 class="wedstrijd-titel">
-                Wedstrijden beheren
-            </h1>
-
-            <p class="wedstrijd-omschrijving">
-                Bekijk en zoek de wedstrijden van je zwemclub.
-            </p>
 
             <a asp-controller="WedstrijdBeheer"
                asp-action="Toevoegen"
-               class="wedstrijd-knop"
-               style="margin-top: 22px;">
+               class="wedstrijd-knop">
                 + Wedstrijd toevoegen
             </a>
         </div>
@@ -366,7 +384,8 @@
 
     <div class="wedstrijd-paneel">
         <div class="wedstrijd-zoekbalk">
-            <form asp-controller="WedstrijdBeheer"
+            <form id="zoekformulier"
+                  asp-controller="WedstrijdBeheer"
                   asp-action="Index"
                   method="get"
                   class="wedstrijd-zoekformulier">
@@ -383,11 +402,27 @@
                            placeholder="Zoek een wedstrijd..." />
                 </div>
 
+                <div class="wedstrijd-zoekveld">
+                    <label for="jaar">
+                        Jaar
+                    </label>
+
+                    <input id="jaar"
+                           name="jaar"
+                           type="number"
+                           min="1"
+                           max="9999"
+                           class="wedstrijd-input"
+                           value="@ViewData["Jaar"]"
+                           placeholder="Bijv. 2026" />
+                </div>
+
                 <button type="submit" class="wedstrijd-knop">
                     Zoeken
                 </button>
 
-                <a asp-controller="WedstrijdBeheer"
+                <a id="alles-tonen"
+                   asp-controller="WedstrijdBeheer"
                    asp-action="Index"
                    class="wedstrijd-knop wedstrijd-knop-licht">
                     Alles tonen
@@ -403,6 +438,7 @@
 
             <span class="wedstrijd-aantal">
                 @Model.Count
+
                 @if (Model.Count == 1)
                 {
                     <text>wedstrijd</text>
@@ -418,7 +454,7 @@
         {
             <div class="wedstrijd-leeg">
                 <strong>Geen wedstrijden gevonden</strong>
-                <span>Probeer een andere zoekterm.</span>
+                <span>Probeer een andere zoekterm of een ander jaar.</span>
             </div>
         }
         else
