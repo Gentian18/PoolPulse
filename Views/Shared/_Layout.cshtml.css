@@ -1,48 +1,87 @@
-﻿/* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    color: #0B1F3B;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-a {
-  color: #0077cc;
+.club-nav {
+    position: relative;
+    min-height: 68px;
+    padding: 10px 0;
+    border-bottom: 1px solid #D8EAF2;
+    background: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(11, 31, 59, .06);
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.club-nav::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #1769E8, #46E2D0);
+    content: "";
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+.club-nav ::deep .club-brand {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin-right: 24px;
+    color: #0B1F3B;
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -.6px;
+    white-space: nowrap;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.club-nav ::deep .club-brand:hover { color: #0B1F3B; }
+.club-brand-accent { color: #1769E8; }
+.club-brand-mark {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    place-items: center;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #1769E8, #1055B8);
+    box-shadow: 0 5px 12px rgba(23, 105, 232, .22);
+    color: #FFFFFF;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px;
+.club-links { align-items: center; gap: 4px; }
+.club-links ::deep .nav-link {
+    padding: 10px 12px;
+    border-radius: 9px;
+    color: #526B80;
+    font-size: 14px;
+    font-weight: 700;
+    transition: background-color .15s ease, color .15s ease;
+}
+.club-links ::deep .nav-link:hover, .club-links ::deep .nav-link.active { background: #EAF4FF; color: #1769E8; }
+.club-links ::deep .club-login {
+    margin-left: 8px;
+    padding: 11px 18px;
+    background: #0B1F3B;
+    color: #FFFFFF;
+}
+.club-links ::deep .club-login:hover, .club-links ::deep .club-login.active { background: #1769E8; color: #FFFFFF; }
+.club-links ::deep .nav-link:focus-visible, .club-nav ::deep .club-brand:focus-visible, .navbar-toggler:focus-visible {
+    outline: 3px solid #1769E8;
+    outline-offset: 3px;
+}
+.navbar-toggler { padding: 7px 9px; border: 1px solid #D8EAF2; border-radius: 10px; background: #F3F9FC; }
+.club-content { flex: 1; }
+.club-footer { padding: 20px 0; border-top: 1px solid #D8EAF2; background: #F7FBFD; color: #60758A; font-size: 14px; }
+.club-footer ::deep a { color: #1769E8; }
+
+@media (max-width: 991.98px) {
+    .club-nav { min-height: 64px; }
+    .club-links { align-items: stretch; gap: 2px; padding: 14px 0 4px; }
+    .club-links ::deep .nav-link { padding: 12px; }
+    .club-links ::deep .club-login { margin: 8px 0 0; text-align: center; }
 }

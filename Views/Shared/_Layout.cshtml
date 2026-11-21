@@ -1,3 +1,15 @@
+@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString();
+    var action = ViewContext.RouteData.Values["action"]?.ToString();
+
+    // Bepaal welke pagina actief is, zodat de juiste menulink opvalt.
+    var isHome = controller == "Home" && action == "Index";
+    var isWedstrijden = controller == "Wedstrijden";
+    var isFotos = controller == "Fotos";
+    var isInschrijven = controller == "Gebruiker" && action == "Registreren";
+    var isContact = controller == "Contact";
+    var isAanmelden = controller == "Gebruiker" && action == "Login";
+}
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -11,33 +23,56 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Zwemclub</a>
+        <nav class="navbar navbar-expand-lg navbar-light club-nav" aria-label="Hoofdnavigatie">
+            <div class="container">
+                <a class="navbar-brand club-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <span class="club-brand-mark" aria-hidden="true">
+                        <img src="~/images/golven.svg" width="24" height="24" alt="" />
+                    </span>
+                    <span>Pool<span class="club-brand-accent">Pulse</span></span>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#hoofdnavigatie" aria-controls="hoofdnavigatie"
-                        aria-expanded="false" aria-label="Navigatie openen">
+                        aria-expanded="false" aria-label="Menu openen of sluiten">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div id="hoofdnavigatie" class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                <div id="hoofdnavigatie" class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav club-links">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link @(isHome ? "active" : "")" aria-current="@(isHome ? "page" : null)"
+                               asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link @(isWedstrijden ? "active" : "")" aria-current="@(isWedstrijden ? "page" : null)"
+                               asp-area="" asp-controller="Wedstrijden" asp-action="Index">Wedstrijden</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(isFotos ? "active" : "")" aria-current="@(isFotos ? "page" : null)"
+                               asp-area="" asp-controller="Fotos" asp-action="Index">Foto’s</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(isInschrijven ? "active" : "")" aria-current="@(isInschrijven ? "page" : null)"
+                               asp-area="" asp-controller="Gebruiker" asp-action="Registreren">Inschrijven</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(isContact ? "active" : "")" aria-current="@(isContact ? "page" : null)"
+                               asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link club-login @(isAanmelden ? "active" : "")" aria-current="@(isAanmelden ? "page" : null)"
+                               asp-area="" asp-controller="Gebruiker" asp-action="Login">Aanmelden</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
+    <div class="container club-content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="club-footer">
         <div class="container">
             &copy; @DateTime.Now.Year - Zwemclub - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

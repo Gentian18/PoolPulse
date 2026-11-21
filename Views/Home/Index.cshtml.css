@@ -45,7 +45,7 @@
 .home-hero h1 span { color: #46E2D0; }
 .home-intro { max-width: 470px; margin: 0 0 24px; color: #D4E4EE; font-size: 16px; line-height: 1.6; }
 
-.home-button {
+.home-hero ::deep .home-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -59,9 +59,9 @@
     text-decoration: none;
 }
 
-.home-button-aqua { background: #46E2D0; color: #0B1F3B; }
-.home-button-aqua:hover { background: #79EADD; color: #0B1F3B; }
-.home-button:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+.home-hero ::deep .home-button-aqua { background: #46E2D0; color: #0B1F3B; }
+.home-hero ::deep .home-button-aqua:hover { background: #79EADD; color: #0B1F3B; }
+.home-hero ::deep .home-button:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
 
 .home-water {
     display: grid;
@@ -114,7 +114,7 @@
 @media (max-width: 480px) {
     .home-hero { padding: 24px; }
     .home-hero h1 { font-size: 38px; }
-    .home-button { width: 100%; }
+    .home-hero ::deep .home-button { width: 100%; }
     .home-about h2, .home-signup h2 { font-size: 23px; }
     .home-card, .home-signup { padding: 22px; }
 }
