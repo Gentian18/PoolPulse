@@ -2,14 +2,30 @@
     ViewData["Title"] = "Account aangemaakt";
 }
 
-<div class="row justify-content-center mt-5">
-    <div class="col-md-8 col-lg-6">
-        <div class="card shadow-sm rounded-4">
-            <div class="card-body p-4 p-md-5 text-center">
-                <h1 class="h2 mb-3">Je account is aangemaakt</h1>
-                <p class="mb-4">Je bent nu aangemeld. Welkom bij de zwemclub!</p>
-                <a asp-controller="Home" asp-action="Index" class="btn btn-primary">Naar de startpagina</a>
-            </div>
+@section Styles {
+    <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+}
+
+<div class="account-page">
+    <header class="account-header">
+        <p class="account-label">Welkom bij onze zwemclub</p>
+        <h1>Account aangemaakt</h1>
+        <p>Je bent klaar om samen met ons het water in te duiken.</p>
+    </header>
+
+    <section class="account-card account-confirmation">
+        <span class="account-confirmation-icon" aria-hidden="true">✓</span>
+
+        <h2>Je account is aangemaakt</h2>
+        <p>Je bent nu aangemeld. Welkom bij de zwemclub!</p>
+
+        <div class="account-actions">
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="account-button">
+                Naar de startpagina
+                <span aria-hidden="true">→</span>
+            </a>
         </div>
-    </div>
+    </section>
 </div>
