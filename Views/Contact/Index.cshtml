@@ -1,0 +1,85 @@
+﻿@model Zwemclub.ViewModels.ContactViewModel
+
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<div class="contact-page">
+
+    <section class="contact-header">
+        <p class="contact-label">Contact</p>
+
+        <h1>
+            We helpen je graag <span>verder.</span>
+        </h1>
+
+        <p class="contact-intro">
+            Heb je een vraag over onze zwemclub?
+            Hieronder vind je de contactgegevens van onze voorzitter.
+        </p>
+    </section>
+
+    <section class="contact-section">
+
+        <div class="contact-section-header">
+            <p class="contact-section-label">Contactgegevens</p>
+            <h2>Neem contact op met onze voorzitter</h2>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.Email))
+        {
+            <article class="contact-card">
+
+                <div class="contact-person">
+                    <div class="contact-avatar" aria-hidden="true">
+                        @Model.Voornaam.FirstOrDefault()@Model.Naam.FirstOrDefault()
+                    </div>
+
+                    <div class="contact-person-info">
+                        <h3>@Model.VolledigeNaam</h3>
+                        <p>Voorzitter</p>
+                    </div>
+                </div>
+
+                <div class="contact-divider"></div>
+
+                <div class="contact-details">
+                    <p>
+                        Heb je een vraag over lid worden, trainingen,
+                        wedstrijden of de werking van onze club?
+                        Neem gerust contact op.
+                    </p>
+
+                    <div class="contact-email-block">
+                        <span class="contact-email-label">E-mail</span>
+
+                        <a href="mailto:@Model.Email"
+                           class="contact-email">
+                            @Model.Email
+                        </a>
+                    </div>
+                </div>
+
+                <a href="mailto:@Model.Email"
+                   class="contact-button">
+                    Stuur een e-mail
+                    <span aria-hidden="true">→</span>
+                </a>
+
+            </article>
+        }
+        else
+        {
+            <div class="contact-unavailable">
+                <h3>Contactgegevens niet beschikbaar</h3>
+
+                <p>
+                    De contactgegevens van onze voorzitter
+                    zijn momenteel niet beschikbaar.
+                </p>
+            </div>
+        }
+
+    </section>
+
+</div>
