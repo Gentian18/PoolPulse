@@ -128,7 +128,19 @@ namespace Zwemclub.Controllers
                     gebruiker,
                     isPersistent: false);
 
-                return RedirectToAction("Index", "Home");
+                TempData["AccountAangemaakt"] = true;
+                return RedirectToAction(nameof(Bevestiging));
+        }
+
+        [HttpGet]
+        public IActionResult Bevestiging()
+        {
+            if (TempData["AccountAangemaakt"] is not true)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View();
         }
 
         private async Task VulGeslachtenAsync()
