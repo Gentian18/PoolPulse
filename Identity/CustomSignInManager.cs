@@ -5,22 +5,22 @@ using Microsoft.Extensions.Options;
 
 namespace Zwemclub.Identity
 {
-    public class CustomSignInManager : SignInManager<CustomUser>
+    public class CustomSignInManager : SignInManager<Gebruiker>
     {
         public CustomSignInManager(
-            UserManager<CustomUser> userManager,
+            UserManager<Gebruiker> userManager,
             IHttpContextAccessor contextAccessor,
-            IUserClaimsPrincipalFactory<CustomUser> claimsFactory,
+            IUserClaimsPrincipalFactory<Gebruiker> claimsFactory,
             IOptions<IdentityOptions> optionsAccessor,
-            ILogger<SignInManager<CustomUser>> logger,
+            ILogger<SignInManager<Gebruiker>> logger,
             IAuthenticationSchemeProvider schemes,
-            IUserConfirmation<CustomUser> confirmation)
+            IUserConfirmation<Gebruiker> confirmation)
             : base(userManager, contextAccessor, claimsFactory, optionsAccessor, logger, schemes, confirmation)
         {
         }
 
         // Identity roept deze methode aan vóór elke aanmelding; false geeft SignInResult.NotAllowed.
-        public override async Task<bool> CanSignInAsync(CustomUser user)
+        public override async Task<bool> CanSignInAsync(Gebruiker user)
         {
             if (!user.IsActief || user.IsVerwijderd == true)
             {

@@ -63,8 +63,8 @@ namespace Zwemclub.Data.UnitOfWork
         public IGenericRepository<Geslacht> Geslachten =>
             geslachten ??= new GenericRepository<Geslacht>(_context);
 
-        public IGenericRepository<Wedstrijd> Wedstrijden =>
-            wedstrijden ??= new GenericRepository<Wedstrijd>(_context);
+        public IWedstrijdRepository Wedstrijden =>
+            wedstrijden ??= new WedstrijdRepository(_context);
 
 
         public async Task SaveChangesAsync()

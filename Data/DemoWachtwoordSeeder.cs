@@ -21,7 +21,7 @@
             }
 
             using var scope = services.CreateScope();
-            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<CustomUser>>();
+            var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Gebruiker>>();
 
             foreach (var email in DemoEmails)
             {
