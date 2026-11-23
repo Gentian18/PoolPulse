@@ -16,7 +16,7 @@ namespace Zwemclub.Data.UnitOfWork
         private IGenericRepository<VoogdZwemmer>? voogdZwemmers;
         private IGenericRepository<Plaats>? plaatsen;
         private IGenericRepository<Geslacht>? geslachten;
-        private IGenericRepository<Wedstrijd>? wedstrijden;
+        private IWedstrijdRepository? wedstrijden;
 
         public ICustomUserRepository Gebruikers =>
         gebruikers ??= new CustomUserRepository(context);
@@ -54,8 +54,8 @@ namespace Zwemclub.Data.UnitOfWork
         public IGenericRepository<Geslacht> Geslachten =>
             geslachten ??= new GenericRepository<Geslacht>(context);
 
-        public IGenericRepository<Wedstrijd> Wedstrijden =>
-            wedstrijden ??= new GenericRepository<Wedstrijd>(context);
+        public IWedstrijdRepository Wedstrijden =>
+            wedstrijden ??= new WedstrijdRepository(context);
 
         public async Task SaveChangesAsync()
         {

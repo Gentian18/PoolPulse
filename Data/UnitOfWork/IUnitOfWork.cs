@@ -30,7 +30,7 @@ namespace Zwemclub.Data.UnitOfWork
 
         IGenericRepository<Geslacht> Geslachten { get; }
 
-        IGenericRepository<Wedstrijd> Wedstrijden { get; }
+        IWedstrijdRepository Wedstrijden { get; }
 
         Task SaveChangesAsync();
     }

@@ -25,3 +25,53 @@ html {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+/* Publieke wedstrijdpagina's */
+.publieke-wedstrijden { max-width: 1050px; margin: 35px auto 60px; padding: 32px; border: 1px solid #D8EAF2; border-radius: 24px; background: linear-gradient(145deg, #E6F3FA, #F1F8FB 55%, #E4F1F7); box-shadow: 0 18px 50px rgba(11, 31, 59, .08); color: #0B1F3B; }
+.wedstrijd-banner { position: relative; overflow: hidden; padding: 48px; border-radius: 18px; background: linear-gradient(120deg, #0B1F3B, #10345C 65%, #14537A); box-shadow: 0 14px 28px rgba(11, 31, 59, .18); color: #FFF; }
+.wedstrijd-banner::after { position: absolute; right: -40px; bottom: -170px; width: 330px; height: 330px; border: 36px solid rgba(70, 226, 208, .08); border-radius: 50%; content: ""; pointer-events: none; }
+.wedstrijd-kicker, .wedstrijd-sectielabel { margin: 0 0 12px; color: #46E2D0; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; }
+.wedstrijd-banner h1 { max-width: 700px; margin: 0 0 16px; color: #FFF; font-size: clamp(36px, 5vw, 58px); font-weight: 700; letter-spacing: -1.5px; line-height: 1.08; overflow-wrap: anywhere; }
+.wedstrijd-banner h1 span { color: #46E2D0; }
+.wedstrijd-banner > p:not(.wedstrijd-kicker) { max-width: 620px; margin: 4px 0; color: #D4E4EE; line-height: 1.6; }
+.wedstrijd-banner-link { display: inline-flex; gap: 18px; margin-top: 24px; padding: 11px 17px; border-radius: 9px; background: #46E2D0; color: #0B1F3B; font-size: 14px; font-weight: 700; text-decoration: none; }
+.wedstrijd-banner-link:hover { background: #79EADD; color: #0B1F3B; }
+.wedstrijd-terug { display: inline-block; margin-bottom: 24px; color: #1769E8; font-size: 14px; font-weight: 700; text-decoration: none; }
+.wedstrijd-terug:hover { text-decoration: underline; }
+.wedstrijd-sectie { padding-top: 36px; }
+.wedstrijd-sectielabel { margin-bottom: 8px; color: #1769E8; }
+.wedstrijd-sectie h2 { margin: 0 0 8px; font-size: 26px; font-weight: 700; }
+.wedstrijd-intro { margin: 0 0 22px; color: #526B80; font-size: 14px; line-height: 1.6; }
+.wedstrijd-lijst, .reeks-kaart, .wedstrijd-leeg { overflow: hidden; border: 1px solid #DDEBF2; border-radius: 16px; background: #FFF; box-shadow: 0 12px 30px rgba(25, 69, 98, .08); }
+.wedstrijd-item { display: flex; align-items: center; gap: 16px; padding: 20px 24px; border-bottom: 1px solid #EDF2F5; }
+.wedstrijd-item:last-child { border-bottom: 0; }
+.wedstrijd-datum { display: flex; flex: 0 0 62px; height: 62px; flex-direction: column; align-items: center; justify-content: center; border-radius: 12px; background: #E7F3FC; color: #1769E8; }
+.wedstrijd-datum strong { font-size: 21px; line-height: 1; }
+.wedstrijd-datum span { margin-top: 5px; font-size: 10px; font-weight: 700; text-transform: uppercase; }
+.wedstrijd-item-info { flex: 1; min-width: 0; }
+.wedstrijd-item-info h3, .reeks-kop h3 { margin: 0 0 6px; font-size: 16px; font-weight: 700; overflow-wrap: anywhere; }
+.wedstrijd-item-info p, .reeks-kop p { margin: 0; color: #60758A; font-size: 13px; }
+.wedstrijd-link { flex-shrink: 0; padding: 10px 15px; border: 1px solid #D3E7FA; border-radius: 9px; background: #EAF4FF; color: #1769E8; font-size: 13px; font-weight: 700; text-decoration: none; }
+.wedstrijd-link:hover { background: #DCEEFF; color: #1059CA; }
+.wedstrijd-leeg { padding: 32px 24px; color: #526B80; }
+.wedstrijd-leeg strong { color: #0B1F3B; }
+.wedstrijd-leeg p { margin: 8px 0 0; }
+.reeksen-lijst { display: grid; gap: 16px; }
+.reeks-kop { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; background: #F3F9FC; }
+.reeks-aantal { flex-shrink: 0; padding: 7px 12px; border-radius: 20px; background: #E1F0FF; color: #1769E8; font-size: 12px; font-weight: 700; }
+.reeks-leeg { margin: 0; padding: 22px 24px; color: #60758A; font-size: 14px; }
+.resultaten-scroll { overflow-x: auto; }
+.resultaten-tabel { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; }
+.resultaten-tabel th, .resultaten-tabel td { padding: 14px 24px; border-top: 1px solid #EDF2F5; }
+.resultaten-tabel thead th { color: #60758A; font-size: 12px; }
+.resultaten-tabel tbody th { font-weight: 700; }
+.resultaten-tabel td { color: #526B80; }
+.publieke-wedstrijden a:focus-visible { outline: 3px solid #1769E8; outline-offset: 3px; }
+@media (max-width: 600px) {
+    .publieke-wedstrijden { margin: 20px auto 40px; padding: 16px; }
+    .wedstrijd-banner { padding: 28px; }
+    .wedstrijd-sectie { padding-top: 26px; }
+    .wedstrijd-item { flex-wrap: wrap; padding: 18px; }
+    .wedstrijd-link { margin-left: 78px; }
+    .reeks-kop { align-items: flex-start; flex-direction: column; padding: 18px; }
+    .resultaten-tabel th, .resultaten-tabel td { padding: 12px 16px; }
+}
