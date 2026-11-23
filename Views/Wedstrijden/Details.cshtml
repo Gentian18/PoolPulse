@@ -1,0 +1,56 @@
+@model Zwemclub.ViewModels.WedstrijdDetailsViewModel
+@{
+    ViewData["Title"] = Model.Naam;
+}
+
+<div class="publieke-wedstrijden">
+    <a asp-action="Index" class="wedstrijd-terug">← Terug naar wedstrijden</a>
+    <section class="wedstrijd-banner" aria-labelledby="wedstrijd-titel">
+        <p class="wedstrijd-kicker">Wedstrijddetails</p>
+        <h1 id="wedstrijd-titel">@Model.Naam</h1>
+        <p><time datetime="@Model.Datum.ToString("yyyy-MM-dd")">@Model.Datum.ToString("dd/MM/yyyy")</time> · @Model.Locatie</p>
+        <p>@Model.Adres</p>
+    </section>
+
+    <section class="wedstrijd-sectie" aria-labelledby="reeksen-titel">
+        <p class="wedstrijd-sectielabel">Aan de start</p>
+        <h2 id="reeksen-titel">Reeksen en deelnemers</h2>
+        <p class="wedstrijd-intro">Hier vind je de definitief bevestigde deelnemers en hun resultaten zodra die beschikbaar zijn.</p>
+        @if (Model.Reeksen.Count == 0)
+        {
+            <div class="wedstrijd-leeg"><strong>Nog geen reeksen</strong><p>Voor deze wedstrijd zijn nog geen reeksen beschikbaar.</p></div>
+        }
+        else
+        {
+            <div class="reeksen-lijst">
+                @foreach (var reeks in Model.Reeksen)
+                {
+                    <article class="reeks-kaart">
+                        <div class="reeks-kop">
+                            <div><h3>@reeks.Naam</h3><p>@reeks.Geslacht · Start @reeks.Startuur</p></div>
+                            <span class="reeks-aantal">@reeks.Deelnemers.Count @(reeks.Deelnemers.Count == 1 ? "deelnemer" : "deelnemers")</span>
+                        </div>
+                        @if (reeks.Deelnemers.Count == 0)
+                        {
+                            <p class="reeks-leeg">Nog geen definitief bevestigde deelnemers.</p>
+                        }
+                        else
+                        {
+                            <div class="resultaten-scroll">
+                                <table class="resultaten-tabel">
+                                    <thead><tr><th scope="col">Deelnemer</th><th scope="col">Tijd</th><th scope="col">Plaats</th></tr></thead>
+                                    <tbody>
+                                    @foreach (var deelnemer in reeks.Deelnemers)
+                                    {
+                                        <tr><th scope="row">@deelnemer.Voornaam @deelnemer.Naam</th><td>@(string.IsNullOrWhiteSpace(deelnemer.BehaaldeTijd) ? "Nog niet beschikbaar" : deelnemer.BehaaldeTijd)</td><td>@(string.IsNullOrWhiteSpace(deelnemer.BehaaldePlaats) ? "Nog niet beschikbaar" : deelnemer.BehaaldePlaats)</td></tr>
+                                    }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </article>
+                }
+            </div>
+        }
+    </section>
+</div>

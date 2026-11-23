@@ -1,3 +1,5 @@
+using Zwemclub.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews(options =>
@@ -9,7 +11,8 @@ builder.Services.AddDbContext<ZwemclubContext>(options =>
 
 builder.Services.AddIdentity<Gebruiker, IdentityRole>()
     .AddEntityFrameworkStores<ZwemclubContext>()
-    .AddDefaultTokenProviders();
+    .AddDefaultTokenProviders()
+    .AddSignInManager<CustomSignInManager>();
 
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -24,7 +27,11 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 var app = builder.Build();
 
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    await DemoWachtwoordSeeder.SeedAsync(app.Services, app.Configuration);
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();

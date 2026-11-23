@@ -1,0 +1,13 @@
+@model Zwemclub.ViewModels.FotoViewModel
+
+@{
+    ViewData["Title"] = Model.Titel;
+    var categorie = ViewData["Categorie"]?.ToString() ?? "Alles";
+}
+
+<section class="foto-detail" aria-labelledby="foto-titel">
+    <a asp-action="Index" asp-route-categorie="@categorie" asp-fragment="fotogalerij" class="foto-terug">← Terug naar de foto’s</a>
+    <p class="foto-detail-label">@Model.Categorie · Voorbeeldbeeld</p>
+    <h1 id="foto-titel">@Model.Titel</h1>
+    <img src="~/images/fotos/@Model.Bestand" alt="@Model.Beschrijving" />
+</section>

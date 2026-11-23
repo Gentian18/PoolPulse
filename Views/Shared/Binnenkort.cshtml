@@ -1,0 +1,12 @@
+@model string
+
+@{
+    ViewData["Title"] = Model;
+}
+
+<section class="binnenkort" aria-labelledby="binnenkort-titel">
+    <p class="binnenkort-label">Onze zwemclub</p>
+    <h1 id="binnenkort-titel">@Model</h1>
+    <p>Deze pagina is nog in ontwikkeling. Kom later nog eens terug.</p>
+    <a asp-controller="Home" asp-action="Index">Terug naar home</a>
+</section>

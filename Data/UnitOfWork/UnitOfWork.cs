@@ -24,7 +24,7 @@ namespace Zwemclub.Data.UnitOfWork
         private IGenericRepository<VoogdZwemmer>? voogdZwemmers;
         private IGenericRepository<Plaats>? plaatsen;
         private IGenericRepository<Geslacht>? geslachten;
-        private IGenericRepository<Wedstrijd>? wedstrijden;
+        private IWedstrijdRepository? wedstrijden;
 
 
         public IGebruikerRepository GebruikerRepository => _gebruikerRepository
