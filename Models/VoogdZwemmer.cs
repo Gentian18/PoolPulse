@@ -14,8 +14,8 @@ namespace Zwemclub.Models
 
         public bool? IsMailGestuurd { get; set; }
 
-        public CustomUser Voogd { get; set; } = null!;
+        public Gebruiker Voogd { get; set; } = null!;
 
-        public CustomUser Zwemmer { get; set; } = null!;
+        public Gebruiker Zwemmer { get; set; } = null!;
     }
 }

@@ -1,6 +1,6 @@
 namespace Zwemclub.Data
 {
-    public class ZwemclubContext(DbContextOptions<ZwemclubContext> options) : IdentityDbContext<CustomUser>(options)
+    public class ZwemclubContext(DbContextOptions<ZwemclubContext> options) : IdentityDbContext<Gebruiker>(options)
     {
         public DbSet<GebruikerCarpool> GebruikerCarpools => Set<GebruikerCarpool>();
         public DbSet<Parameter> Parameters => Set<Parameter>();
@@ -18,7 +18,7 @@ namespace Zwemclub.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<CustomUser>().ToTable("AspNetUsers");
+            modelBuilder.Entity<Gebruiker>().ToTable("AspNetUsers");
             modelBuilder.Entity<GebruikerCarpool>().ToTable("GebruikerCarpool");
             modelBuilder.Entity<Parameter>().ToTable("Parameter");
             modelBuilder.Entity<TrainerGroep>().ToTable("TrainerGroep");
@@ -79,7 +79,7 @@ namespace Zwemclub.Data
             modelBuilder.Entity<Geslacht>().ToTable("Geslacht");
             modelBuilder.Entity<Wedstrijd>().ToTable("Wedstrijd");
 
-            modelBuilder.Entity<CustomUser>()
+            modelBuilder.Entity<Gebruiker>()
                 .HasOne(e => e.Geslacht)
                 .WithMany(e => e.Gebruikers)
                 .HasForeignKey(e => e.GeslachtId)
@@ -169,7 +169,7 @@ namespace Zwemclub.Data
                 .HasForeignKey(e => e.PlaatsId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<CustomUser>().HasIndex(e => e.UniekNummer).IsUnique();
+            modelBuilder.Entity<Gebruiker>().HasIndex(e => e.UniekNummer).IsUnique();
         
             modelBuilder.Entity<IdentityRole>().HasData(
                 new IdentityRole { Id = "rol-voorzitter", Name = "Voorzitter", NormalizedName = "VOORZITTER", ConcurrencyStamp = "rol-voorzitter-v1" },
@@ -184,8 +184,8 @@ namespace Zwemclub.Data
 
             // Vaste stamps voorkomen modelwijzigingen bij iedere nieuwe migratie.
             // Deze voorbeeldprofielen hebben bewust geen wachtwoord of werkende login.
-            modelBuilder.Entity<CustomUser>().HasData(
-                new CustomUser
+            modelBuilder.Entity<Gebruiker>().HasData(
+                new Gebruiker
                 {
                     Id = "zwemclub-ouder",
                     UserName = "ouder@zwemclub.example",
@@ -202,7 +202,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "ouder-security-v1",
                     ConcurrencyStamp = "ouder-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-zwemmer",
                     UserName = "zwemmer@zwemclub.example",
@@ -220,7 +220,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "zwemmer-security-v1",
                     ConcurrencyStamp = "zwemmer-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-trainer",
                     UserName = "trainer@zwemclub.example",
@@ -237,8 +237,8 @@ namespace Zwemclub.Data
                     ConcurrencyStamp = "trainer-concurrency-v1"
                 });
 
-            modelBuilder.Entity<CustomUser>().HasData(
-                new CustomUser
+            modelBuilder.Entity<Gebruiker>().HasData(
+                new Gebruiker
                 {
                     Id = "zwemclub-voorzitter",
                     UserName = "voorzitter@zwemclub.example",
@@ -254,7 +254,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "voorzitter-security-v1",
                     ConcurrencyStamp = "voorzitter-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-zwemmer-2",
                     UserName = "zwemmer-2@zwemclub.example",
@@ -272,7 +272,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "zwemmer-2-security-v1",
                     ConcurrencyStamp = "zwemmer-2-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-zwemmer-3",
                     UserName = "zwemmer-3@zwemclub.example",
@@ -290,7 +290,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "zwemmer-3-security-v1",
                     ConcurrencyStamp = "zwemmer-3-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-zwemmer-4",
                     UserName = "zwemmer-4@zwemclub.example",
@@ -308,7 +308,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "zwemmer-4-security-v1",
                     ConcurrencyStamp = "zwemmer-4-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-zwemmer-5",
                     UserName = "zwemmer-5@zwemclub.example",
@@ -326,7 +326,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "zwemmer-5-security-v1",
                     ConcurrencyStamp = "zwemmer-5-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-zwemmer-6",
                     UserName = "zwemmer-6@zwemclub.example",
@@ -344,7 +344,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "zwemmer-6-security-v1",
                     ConcurrencyStamp = "zwemmer-6-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-ouder-2",
                     UserName = "ouder-2@zwemclub.example",
@@ -361,7 +361,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "ouder-2-security-v1",
                     ConcurrencyStamp = "ouder-2-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-ouder-3",
                     UserName = "ouder-3@zwemclub.example",
@@ -378,7 +378,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "ouder-3-security-v1",
                     ConcurrencyStamp = "ouder-3-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-ouder-4",
                     UserName = "ouder-4@zwemclub.example",
@@ -395,7 +395,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "ouder-4-security-v1",
                     ConcurrencyStamp = "ouder-4-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-trainer-2",
                     UserName = "trainer-2@zwemclub.example",
@@ -412,7 +412,7 @@ namespace Zwemclub.Data
                     SecurityStamp = "trainer-2-security-v1",
                     ConcurrencyStamp = "trainer-2-concurrency-v1"
                 },
-                new CustomUser
+                new Gebruiker
                 {
                     Id = "zwemclub-trainer-3",
                     UserName = "trainer-3@zwemclub.example",

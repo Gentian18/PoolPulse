@@ -16,8 +16,8 @@ namespace Zwemclub.Models
 
         public DateOnly DatumTot { get; set; }
 
-        public CustomUser Trainer { get; set; } = null!;
+        public Gebruiker Trainer { get; set; } = null!;
 
-        public CustomUser Zwemmer { get; set; } = null!;
+        public Gebruiker Zwemmer { get; set; } = null!;
     }
 }

@@ -24,7 +24,7 @@ namespace Zwemclub.Models
 
         public ICollection<GebruikerCarpool> Deelnemers { get; set; } = [];
 
-        public CustomUser Ouder { get; set; } = null!;
+        public Gebruiker Ouder { get; set; } = null!;
 
         public Wedstrijd Wedstrijd { get; set; } = null!;
     }

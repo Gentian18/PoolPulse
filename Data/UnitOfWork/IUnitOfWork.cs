@@ -6,7 +6,7 @@ namespace Zwemclub.Data.UnitOfWork
 {
     public interface IUnitOfWork
     {
-        ICustomUserRepository Gebruikers { get; }
+        IGebruikerRepository GebruikerRepository { get; }
 
         IGenericRepository<GebruikerCarpool> GebruikerCarpools { get; }
 
