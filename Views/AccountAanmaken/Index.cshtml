@@ -1,0 +1,106 @@
+﻿@model Zwemclub.ViewModels.AccountAanmakenViewModel
+
+@{
+    ViewData["Title"] = "Account aanmaken";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/account.css" asp-append-version="true" />
+}
+
+<div class="account-page">
+    <header class="account-header">
+        <p class="account-label">Welkom bij onze zwemclub</p>
+        <h1>Account aanmaken</h1>
+        <p>Maak een account aan en ontdek onze zwemclub.</p>
+    </header>
+
+    <section class="account-card">
+        <h2>Jouw gegevens</h2>
+        <p class="account-card-intro">
+            Vul je gegevens in om een account aan te maken.
+        </p>
+
+        <form asp-controller="AccountAanmaken"
+              asp-action="Index"
+              method="post"
+              class="account-form">
+
+            <div asp-validation-summary="ModelOnly"
+                 class="account-validation-summary"></div>
+
+            <div class="account-field">
+                <label asp-for="Voornaam"></label>
+                <input asp-for="Voornaam" class="account-input" />
+                <span asp-validation-for="Voornaam" class="account-validation"></span>
+            </div>
+
+            <div class="account-field">
+                <label asp-for="Naam"></label>
+                <input asp-for="Naam" class="account-input" />
+                <span asp-validation-for="Naam" class="account-validation"></span>
+            </div>
+
+            <div class="account-field">
+                <label asp-for="Geboortedatum"></label>
+                <input asp-for="Geboortedatum" type="date" class="account-input" />
+                <span asp-validation-for="Geboortedatum" class="account-validation"></span>
+            </div>
+
+            <div class="account-field">
+                <label asp-for="GeslachtId"></label>
+                <select asp-for="GeslachtId"
+                        asp-items="ViewBag.Geslachten"
+                        class="account-input">
+                    <option value="">Selecteer een geslacht</option>
+                </select>
+                <span asp-validation-for="GeslachtId" class="account-validation"></span>
+            </div>
+
+            <div class="account-field">
+                <label asp-for="Emailadres"></label>
+                <input asp-for="Emailadres" class="account-input" />
+                <span asp-validation-for="Emailadres" class="account-validation"></span>
+            </div>
+
+            <div class="account-field">
+                <label asp-for="Telefoonnummer"></label>
+                <input asp-for="Telefoonnummer" class="account-input" />
+                <span asp-validation-for="Telefoonnummer" class="account-validation"></span>
+            </div>
+
+            <div class="account-field">
+                <label asp-for="Rol"></label>
+                <select asp-for="Rol" class="account-input">
+                    <option value="">Selecteer een rol</option>
+                    <option value="Zwemmer">Zwemmer</option>
+                    <option value="Ouder">Ouder</option>
+                </select>
+                <span asp-validation-for="Rol" class="account-validation"></span>
+            </div>
+
+            <div class="account-field">
+                <label asp-for="Wachtwoord"></label>
+                <input asp-for="Wachtwoord" type="password" class="account-input" />
+                <span asp-validation-for="Wachtwoord" class="account-validation"></span>
+            </div>
+
+            <div class="account-field">
+                <label asp-for="BevestigWachtwoord"></label>
+                <input asp-for="BevestigWachtwoord" type="password" class="account-input" />
+                <span asp-validation-for="BevestigWachtwoord" class="account-validation"></span>
+            </div>
+
+            <div class="account-actions">
+                <button type="submit" class="account-button">
+                    Account aanmaken
+                    <span aria-hidden="true">→</span>
+                </button>
+            </div>
+        </form>
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

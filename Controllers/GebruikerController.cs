@@ -5,10 +5,10 @@ namespace Zwemclub.Controllers
     [AllowAnonymous]
     public class GebruikerController : Controller
     {
-        private readonly UserManager<CustomUser> _userManager;
-        private readonly SignInManager<CustomUser> _signInManager;
+        private readonly UserManager<Gebruiker> _userManager;
+        private readonly SignInManager<Gebruiker> _signInManager;
 
-        public GebruikerController(UserManager<CustomUser> userManager, SignInManager<CustomUser> signInManager)
+        public GebruikerController(UserManager<Gebruiker> userManager, SignInManager<Gebruiker> signInManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;

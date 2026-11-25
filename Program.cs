@@ -9,7 +9,7 @@ builder.Services.AddDbContext<ZwemclubContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LocalDBConnection")
         ?? throw new InvalidOperationException("ConnectionStrings:LocalDBConnection ontbreekt.")));
 
-builder.Services.AddIdentity<CustomUser, IdentityRole>()
+builder.Services.AddIdentity<Gebruiker, IdentityRole>()
     .AddEntityFrameworkStores<ZwemclubContext>()
     .AddDefaultTokenProviders()
     .AddSignInManager<CustomSignInManager>();

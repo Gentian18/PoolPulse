@@ -5,9 +5,9 @@ namespace Zwemclub.Controllers
     [AllowAnonymous]
     public class ContactController : Controller
     {
-        private readonly UserManager<CustomUser> _userManager;
+        private readonly UserManager<Gebruiker> _userManager;
 
-        public ContactController(UserManager<CustomUser> userManager)
+        public ContactController(UserManager<Gebruiker> userManager)
         {
             _userManager = userManager;
         }

@@ -1,6 +1,6 @@
 namespace Zwemclub.Models
 {
-    public class CustomUser : IdentityUser
+    public class Gebruiker : IdentityUser
     {
         [MaxLength(256)]
         public string? Naam { get; set; }
@@ -12,7 +12,6 @@ namespace Zwemclub.Models
 
         public int? GeslachtId { get; set; }
 
-        [Required]
         [MaxLength(256)]
         public string UniekNummer { get; set; } = string.Empty;
 
