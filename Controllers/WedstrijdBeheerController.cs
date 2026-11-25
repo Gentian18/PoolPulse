@@ -2,18 +2,18 @@
 
 namespace Zwemclub.Controllers
 {
-    //[Authorize(Roles = "Voorzitter")]
+    [Authorize(Roles = "Voorzitter")]
     public class WedstrijdBeheerController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IEmailService _emailService;
-        private readonly UserManager<CustomUser> _userManager;
+        private readonly UserManager<Gebruiker> _userManager;
         private readonly ILogger<WedstrijdBeheerController> _logger;
 
         public WedstrijdBeheerController(
             IUnitOfWork unitOfWork,
             IEmailService emailService,
-            UserManager<CustomUser> userManager,
+            UserManager<Gebruiker> userManager,
             ILogger<WedstrijdBeheerController> logger)
         {
             _unitOfWork = unitOfWork;
