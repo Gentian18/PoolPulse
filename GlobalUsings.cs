@@ -10,3 +10,5 @@ global using Zwemclub.Models;
 global using Zwemclub.Data;
 global using Zwemclub.Data.Repository;
 global using Zwemclub.Data.UnitOfWork;
+global using Zwemclub.Services;
+global using Zwemclub.Services.Interface;

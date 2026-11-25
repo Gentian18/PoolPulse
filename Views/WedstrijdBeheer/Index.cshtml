@@ -27,7 +27,7 @@
             color: #0B1F3B;
         }
 
-    /* Bovenkant */
+    /* Blauwe bovenkant */
 
     .wedstrijd-hero {
         position: relative;
@@ -54,6 +54,10 @@
     .wedstrijd-hero-inhoud {
         position: relative;
         z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
     }
 
     .wedstrijd-label {
@@ -82,7 +86,42 @@
         line-height: 1.6;
     }
 
-    /* Paneel */
+    /* Knoppen */
+
+    .wedstrijd-knop {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 18px;
+        border: 1px solid #1769E8;
+        border-radius: 9px;
+        background: #1769E8;
+        color: #FFFFFF;
+        font-size: 13px;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+
+        .wedstrijd-knop:hover {
+            background: #1059CA;
+            color: #FFFFFF;
+        }
+
+    .wedstrijd-knop-licht {
+        border-color: #DCE6ED;
+        background: #FFFFFF;
+        color: #0B1F3B;
+    }
+
+        .wedstrijd-knop-licht:hover {
+            background: #EEF7FB;
+            color: #0B1F3B;
+        }
+
+    /* Overzicht */
 
     .wedstrijd-paneel {
         overflow: hidden;
@@ -92,8 +131,6 @@
         background: #FFFFFF;
         box-shadow: 0 12px 30px rgba(25, 69, 98, 0.09);
     }
-
-    /* Zoeken */
 
     .wedstrijd-zoekbalk {
         padding: 25px;
@@ -133,41 +170,6 @@
             outline: 2px solid #A9CAF9;
             border-color: #1769E8;
         }
-
-    .wedstrijd-knop {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 44px;
-        padding: 10px 18px;
-        border: 1px solid #1769E8;
-        border-radius: 9px;
-        background: #1769E8;
-        color: #FFFFFF;
-        font-size: 13px;
-        font-weight: 700;
-        text-decoration: none;
-        white-space: nowrap;
-        cursor: pointer;
-    }
-
-        .wedstrijd-knop:hover {
-            background: #1059CA;
-            color: #FFFFFF;
-        }
-
-    .wedstrijd-knop-licht {
-        border-color: #DCE6ED;
-        background: #FFFFFF;
-        color: #0B1F3B;
-    }
-
-        .wedstrijd-knop-licht:hover {
-            background: #EEF7FB;
-            color: #0B1F3B;
-        }
-
-    /* Titel boven de lijst */
 
     .wedstrijd-overzicht-header {
         display: flex;
@@ -268,6 +270,8 @@
 
     .wedstrijd-bekijken {
         flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
         min-height: 40px;
         padding: 9px 15px;
         border: 1px solid #D3E7FA;
@@ -277,6 +281,7 @@
         font-size: 13px;
         font-weight: 700;
         text-decoration: none;
+        white-space: nowrap;
     }
 
         .wedstrijd-bekijken:hover {
@@ -307,6 +312,11 @@
 
         .wedstrijd-hero {
             padding: 27px;
+        }
+
+        .wedstrijd-hero-inhoud {
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .wedstrijd-titel {
@@ -343,19 +353,33 @@
 
     <div class="wedstrijd-hero">
         <div class="wedstrijd-hero-inhoud">
-            <div class="wedstrijd-label">
-                Wedstrijdbeheer
+            <div>
+                <div class="wedstrijd-label">
+                    Wedstrijdbeheer
+                </div>
+
+                <h1 class="wedstrijd-titel">
+                    Wedstrijden beheren
+                </h1>
+
+                <p class="wedstrijd-omschrijving">
+                    Bekijk en zoek de wedstrijden van je zwemclub.
+                </p>
             </div>
 
-            <h1 class="wedstrijd-titel">
-                Wedstrijden beheren
-            </h1>
-
-            <p class="wedstrijd-omschrijving">
-                Bekijk en zoek de wedstrijden van je zwemclub.
-            </p>
+            <a asp-controller="WedstrijdBeheer"
+               asp-action="Toevoegen"
+               class="wedstrijd-knop">
+                + Wedstrijd toevoegen
+            </a>
         </div>
     </div>
+    @if (TempData["Melding"] != null)
+    {
+        <div class="alert alert-info mt-3">
+            @TempData["Melding"]
+        </div>
+    }
 
     <div class="wedstrijd-paneel">
         <div class="wedstrijd-zoekbalk">
@@ -396,6 +420,7 @@
 
             <span class="wedstrijd-aantal">
                 @Model.Count
+
                 @if (Model.Count == 1)
                 {
                     <text>wedstrijd</text>

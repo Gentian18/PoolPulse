@@ -16,6 +16,9 @@ builder.Services.AddIdentity<Gebruiker, IdentityRole>()
 
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+
+
 TypeAdapterConfig.GlobalSettings.Scan(typeof(Program).Assembly);
 
 builder.Services.ConfigureApplicationCookie(options =>
