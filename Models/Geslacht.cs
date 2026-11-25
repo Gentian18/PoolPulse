@@ -10,7 +10,7 @@ namespace Zwemclub.Models
 
         public bool IsVerwijderd { get; set; }
 
-        public ICollection<CustomUser> Gebruikers { get; set; } = [];
+        public ICollection<Gebruiker> Gebruikers { get; set; } = [];
 
         public ICollection<WedstrijdReeks> WedstrijdReeksen { get; set; } = [];
     }

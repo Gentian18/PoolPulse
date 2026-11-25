@@ -18,7 +18,7 @@ namespace Zwemclub.Models
 
         public int AantalPersonen { get; set; }
 
-        public CustomUser Gebruiker { get; set; } = null!;
+        public Gebruiker Gebruiker { get; set; } = null!;
 
         public Carpool Carpool { get; set; } = null!;
     }

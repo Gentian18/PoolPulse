@@ -6,7 +6,7 @@ namespace Zwemclub.Data.UnitOfWork
 {
     public interface IUnitOfWork
     {
-        ICustomUserRepository Gebruikers { get; }
+        IGebruikerRepository GebruikerRepository { get; }
 
         IGenericRepository<GebruikerCarpool> GebruikerCarpools { get; }
 
@@ -30,7 +30,7 @@ namespace Zwemclub.Data.UnitOfWork
 
         IGenericRepository<Geslacht> Geslachten { get; }
 
-        IGenericRepository<Wedstrijd> Wedstrijden { get; }
+        IWedstrijdRepository Wedstrijden { get; }
 
         Task SaveChangesAsync();
     }

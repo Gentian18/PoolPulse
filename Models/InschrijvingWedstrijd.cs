@@ -27,7 +27,7 @@ namespace Zwemclub.Models
 
         public bool IsVerwijderd { get; set; }
 
-        public CustomUser Zwemmer { get; set; } = null!;
+        public Gebruiker Zwemmer { get; set; } = null!;
 
         public WedstrijdReeks WedstrijdReeks { get; set; } = null!;
     }

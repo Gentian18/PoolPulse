@@ -1,0 +1,48 @@
+@model List<Zwemclub.ViewModels.FotoViewModel>
+
+@{
+    ViewData["Title"] = "Foto’s";
+    var categorie = ViewData["Categorie"]?.ToString() ?? "Alles";
+    var categorieen = new[] { "Alles", "Zwembad", "Sfeer", "Podium" };
+}
+
+<div class="fotos-page">
+    <section class="fotos-header" aria-labelledby="fotos-titel">
+        <p class="fotos-label">Onze zwemclub in beeld</p>
+        <h1 id="fotos-titel">Samen maken we <span>herinneringen.</span></h1>
+        <p>Van de spanning aan de start tot de sfeer naast het water: ontdek de mooie momenten van onze zwemclub.</p>
+        <a href="#fotogalerij" class="fotos-header-link">Bekijk de foto’s <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section id="fotogalerij" class="fotos-galerij" aria-labelledby="galerij-titel">
+        <div class="galerij-heading">
+            <div>
+                <p class="galerij-label">Een kijkje in de club</p>
+                <h2 id="galerij-titel">Onze momenten</h2>
+                <p>Een verzameling van momenten in en rond het zwembad.</p>
+            </div>
+            <nav class="foto-filters" aria-label="Filter foto’s">
+                @foreach (var filter in categorieen)
+                {
+                    <a asp-action="Index" asp-route-categorie="@filter" asp-fragment="fotogalerij"
+                       class="@(categorie == filter ? "active" : "")" aria-current="@(categorie == filter ? "true" : null)">@filter</a>
+                }
+            </nav>
+        </div>
+
+        <p class="voorbeeldmelding">Dit zijn voorbeeldbeelden. Echte clubfoto’s verschijnen hier later, met toestemming van de betrokkenen.</p>
+
+        <div class="foto-grid">
+            @foreach (var foto in Model)
+            {
+                <article class="foto-kaart">
+                    <a asp-action="Details" asp-route-id="@foto.Id" asp-route-categorie="@categorie" class="foto-link" aria-label="Bekijk voorbeeldfoto: @foto.Titel">
+                        <img src="~/images/fotos/@foto.Bestand" alt="@foto.Beschrijving" loading="lazy" />
+                        <span class="foto-overlay"><span>@foto.Categorie</span><strong>@foto.Titel</strong></span>
+                        <span class="foto-open" aria-hidden="true">↗</span>
+                    </a>
+                </article>
+            }
+        </div>
+    </section>
+</div>

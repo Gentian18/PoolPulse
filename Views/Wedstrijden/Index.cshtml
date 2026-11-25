@@ -1,0 +1,39 @@
+@model List<Zwemclub.ViewModels.WedstrijdOverzichtViewModel>
+@{
+    ViewData["Title"] = "Wedstrijden";
+}
+
+<div class="publieke-wedstrijden">
+    <section class="wedstrijd-banner" aria-labelledby="wedstrijd-titel">
+        <p class="wedstrijd-kicker">Samen aan de start</p>
+        <h1 id="wedstrijd-titel">Onze <span>wedstrijden.</span></h1>
+        <p>Ontdek de wedstrijden van onze zwemclub en bekijk de reeksen, deelnemers en resultaten.</p>
+        <a class="wedstrijd-banner-link" href="#wedstrijd-overzicht">Bekijk het overzicht <span aria-hidden="true">↓</span></a>
+    </section>
+
+    <section id="wedstrijd-overzicht" class="wedstrijd-sectie" aria-labelledby="overzicht-titel">
+        <p class="wedstrijd-sectielabel">Op naar de start</p>
+        <h2 id="overzicht-titel">Wedstrijden</h2>
+        <p class="wedstrijd-intro">Kies een wedstrijd voor alle reeksen en deelnemers.</p>
+        @if (Model.Count == 0)
+        {
+            <div class="wedstrijd-leeg"><strong>Nog geen wedstrijden</strong><p>Er zijn momenteel geen wedstrijden om te tonen.</p></div>
+        }
+        else
+        {
+            <div class="wedstrijd-lijst">
+                @foreach (var wedstrijd in Model)
+                {
+                    <article class="wedstrijd-item">
+                        <div class="wedstrijd-datum" aria-hidden="true"><strong>@wedstrijd.Datum.ToString("dd")</strong><span>@wedstrijd.Datum.ToString("MMM", System.Globalization.CultureInfo.GetCultureInfo("nl-BE"))</span></div>
+                        <div class="wedstrijd-item-info">
+                            <h3>@wedstrijd.Naam</h3>
+                            <p><time datetime="@wedstrijd.Datum.ToString("yyyy-MM-dd")">@wedstrijd.Datum.ToString("dd/MM/yyyy")</time> · @wedstrijd.Locatie</p>
+                        </div>
+                        <a asp-action="Details" asp-route-id="@wedstrijd.Id" class="wedstrijd-link" aria-label="Bekijk wedstrijd: @wedstrijd.Naam">Bekijk wedstrijd <span aria-hidden="true">→</span></a>
+                    </article>
+                }
+            </div>
+        }
+    </section>
+</div>
