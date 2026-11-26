@@ -6,7 +6,7 @@
     var isHome = controller == "Home" && action == "Index";
     var isWedstrijden = controller == "Wedstrijden";
     var isFotos = controller == "Fotos";
-    var isInschrijven = controller == "Gebruiker" && action == "Registreren";
+    var isInschrijven = controller == "AccountAanmaken" && action == "Index";
     var isContact = controller == "Contact";
     var isAanmelden = controller == "Gebruiker" && action == "Login";
 
@@ -51,12 +51,12 @@
                                asp-area="" asp-controller="Fotos" asp-action="Index">Foto’s</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @(isInschrijven ? "active" : "")" aria-current="@(isInschrijven ? "page" : null)"
-                               asp-area="" asp-controller="Gebruiker" asp-action="Registreren">Inschrijven</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link @(isContact ? "active" : "")" aria-current="@(isContact ? "page" : null)"
                                asp-area="" asp-controller="Contact" asp-action="Index">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(isInschrijven ? "active" : "")" aria-current="@(isInschrijven ? "page" : null)"
+                               asp-area="" asp-controller="AccountAanmaken" asp-action="Index">Inschrijven</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link club-login @(isAanmelden ? "active" : "")" aria-current="@(isAanmelden ? "page" : null)"

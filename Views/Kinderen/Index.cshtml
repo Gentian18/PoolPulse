@@ -1,0 +1,146 @@
+@model Zwemclub.ViewModels.Kinderen.KinderenViewModel
+
+@{
+    ViewData["Title"] = "Mijn kinderen";
+}
+
+<div class="kinderen-view-index">
+<div class="kinderen-pagina">
+
+    <div class="kinderen-hero">
+        <div>
+            <h1>Mijn kinderen</h1>
+            <p>Bekijk en beheer de kinderen die aan jouw account gekoppeld zijn.</p>
+        </div>
+
+        <div class="kinderen-acties">
+            <a asp-controller="Kinderen"
+               asp-action="Toevoegen"
+               class="btn-kinderen btn-kinderen-primair">
+                + Kind toevoegen
+            </a>
+
+            <a asp-controller="Kinderen"
+               asp-action="Koppelen"
+               class="btn-kinderen btn-kinderen-secundair">
+                Bestaande zwemmer koppelen
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="melding melding-succes">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="melding melding-fout">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <div class="kinderen-overzicht">
+
+        @if (Model.Kinderen.Any())
+        {
+            @foreach (var kind in Model.Kinderen)
+            {
+                <div class="kind-kaart">
+                    <div class="kind-info">
+                        <h3>@kind.Voornaam @kind.Naam</h3>
+
+                        <p>
+                            <strong>Geboortedatum:</strong>
+                            @(kind.Geboortedatum?.ToString("dd/MM/yyyy") ?? "Niet ingevuld")
+                        </p>
+
+                        <p>
+                            <strong>Uniek nummer:</strong>
+                            @kind.UniekNummer
+                        </p>
+
+                        @if (kind.Wedstrijden.Any())
+                        {
+                            <div class="kind-wedstrijden">
+                                <h4>Wedstrijden</h4>
+
+                                @foreach (var wedstrijd in kind.Wedstrijden)
+                                {
+                                    <div class="wedstrijd-rij">
+
+                                        <div class="wedstrijd-info">
+                                            <strong>@wedstrijd.WedstrijdNaam</strong>
+
+                                            <span>@wedstrijd.ReeksNaam</span>
+
+                                            <span>
+                                                @wedstrijd.Datum.ToString("dd/MM/yyyy")
+                                                om @wedstrijd.Startuur
+                                            </span>
+                                        </div>
+
+                                        <div class="wedstrijd-status">
+                                            @wedstrijd.Status
+                                        </div>
+                                    </div>
+
+                                    @if (!string.IsNullOrWhiteSpace(wedstrijd.BehaaldeTijd) ||
+                                         !string.IsNullOrWhiteSpace(wedstrijd.BehaaldePlaats))
+                                    {
+                                        <div class="wedstrijd-resultaat">
+
+                                            @if (!string.IsNullOrWhiteSpace(wedstrijd.BehaaldeTijd))
+                                            {
+                                                <span>
+                                                    <strong>Tijd:</strong>
+                                                    @wedstrijd.BehaaldeTijd
+                                                </span>
+                                            }
+
+                                            @if (!string.IsNullOrWhiteSpace(wedstrijd.BehaaldePlaats))
+                                            {
+                                                <span>
+                                                    <strong>Plaats:</strong>
+                                                    @wedstrijd.BehaaldePlaats
+                                                </span>
+                                            }
+
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="geen-wedstrijden">
+                                Nog geen wedstrijdinschrijvingen.
+                            </div>
+                        }
+                    </div>
+
+                    <div class="kind-acties">
+                        <a asp-controller="Kinderen"
+                           asp-action="Ontkoppelen"
+                           asp-route-id="@kind.Id"
+                           class="btn-kinderen btn-kinderen-ontkoppelen">
+                            Ontkoppelen
+                        </a>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="geen-kinderen">
+                <h3>Je hebt nog geen kinderen gekoppeld.</h3>
+                <p>Voeg een kind toe om het hier te kunnen bekijken.</p>
+            </div>
+        }
+
+    </div>
+
+</div>
+</div>
