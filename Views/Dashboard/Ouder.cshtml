@@ -2,7 +2,144 @@
     ViewData["Title"] = "Dashboard Ouder";
 }
 
-<section class="container py-5">
-    <h1 class="h2">Dashboard Ouder</h1>
-    <p>Hier zie je straks de inschrijvingen en carpools van je kinderen.</p>
-</section>
+<div class="ouder-pagina">
+    <div class="ouder-hero">
+        <p class="ouder-label">Dashboard ouder</p>
+        <h1>Welkom terug</h1>
+        <p class="ouder-omschrijving">Beheer hier de zwemmers die aan jou gekoppeld zijn.</p>
+    </div>
+
+    <div class="ouder-paneel">
+        <div class="ouder-kaarten">
+            <a class="ouder-kaart" asp-controller="Kinderen" asp-action="Index">
+                <span class="ouder-kaart-titel">Mijn kinderen</span>
+                <span class="ouder-kaart-tekst">Bekijk je kinderen en ontkoppel ze indien nodig.</span>
+                <span class="ouder-kaart-actie">Openen</span>
+            </a>
+
+            <a class="ouder-kaart" asp-controller="Kinderen" asp-action="Toevoegen">
+                <span class="ouder-kaart-titel">Kind toevoegen</span>
+                <span class="ouder-kaart-tekst">Maak een nieuw zwemmersaccount aan dat meteen aan jou gekoppeld wordt.</span>
+                <span class="ouder-kaart-actie">Toevoegen</span>
+            </a>
+
+            <a class="ouder-kaart" asp-controller="Kinderen" asp-action="Koppelen">
+                <span class="ouder-kaart-titel">Kind koppelen</span>
+                <span class="ouder-kaart-tekst">Koppel een bestaand zwemmersaccount via het unieke nummer.</span>
+                <span class="ouder-kaart-actie">Koppelen</span>
+            </a>
+        </div>
+
+        <div class="ouder-afmelden">
+            <partial name="_AfmeldenKnop" />
+        </div>
+    </div>
+</div>
+
+<style>
+    .ouder-pagina {
+        max-width: 1050px;
+        margin: 35px auto 60px;
+        padding: 32px;
+        border: 1px solid #D8EAF2;
+        border-radius: 24px;
+        background: linear-gradient(145deg, #E6F3FA 0%, #F1F8FB 55%, #E4F1F7 100%);
+        box-shadow: 0 18px 50px rgba(11, 31, 59, 0.08);
+        font-family: Arial, Helvetica, sans-serif;
+        color: #0B1F3B;
+    }
+
+    .ouder-hero {
+        padding: 38px;
+        border-radius: 18px;
+        background: linear-gradient(120deg, #0B1F3B 0%, #10345C 65%, #14537A 100%);
+        box-shadow: 0 14px 28px rgba(11, 31, 59, 0.18);
+        color: #FFFFFF;
+    }
+
+    .ouder-label {
+        margin-bottom: 12px;
+        color: #46E2D0;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+    }
+
+    .ouder-hero h1 {
+        margin: 0 0 12px;
+        color: #FFFFFF;
+        font-size: 38px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        line-height: 1.1;
+    }
+
+    .ouder-omschrijving {
+        margin: 0;
+        color: #B9CEDD;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .ouder-paneel {
+        margin-top: 22px;
+        padding: 25px;
+        border: 1px solid #DDEBF2;
+        border-radius: 16px;
+        background: #FFFFFF;
+        box-shadow: 0 12px 30px rgba(25, 69, 98, 0.09);
+    }
+
+    .ouder-kaarten {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 16px;
+    }
+
+    .ouder-kaart {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 22px;
+        border: 1px solid #D3E7FA;
+        border-radius: 14px;
+        background: #F3F9FC;
+        color: #0B1F3B;
+        text-decoration: none;
+        transition: background 0.15s, border-color 0.15s;
+    }
+
+        .ouder-kaart:hover {
+            border-color: #AFCFF4;
+            background: #E7F3FC;
+            color: #0B1F3B;
+        }
+
+    .ouder-kaart-titel {
+        font-size: 17px;
+        font-weight: 700;
+    }
+
+    .ouder-kaart-tekst {
+        color: #60758A;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    .ouder-kaart-actie {
+        margin-top: auto;
+        padding-top: 8px;
+        color: #1769E8;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .ouder-afmelden {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 25px;
+        padding-top: 20px;
+        border-top: 1px solid #EAF0F4;
+    }
+</style>
