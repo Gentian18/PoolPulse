@@ -1,0 +1,81 @@
+﻿@model Zwemclub.ViewModels.Kinderen.KindToevoegenViewModel
+
+@{
+    ViewData["Title"] = "Kind toevoegen";
+}
+
+<div class="kind-toevoegen-pagina">
+
+    <div class="kind-toevoegen-container">
+
+        <div class="kind-toevoegen-header">
+            <h1>Kind toevoegen</h1>
+            <p>Vul hieronder de gegevens van je kind in.</p>
+        </div>
+
+        <div class="kind-toevoegen-formulier">
+
+            <form asp-controller="Kinderen"
+                  asp-action="Toevoegen"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly"
+                     class="validatie-samenvatting">
+                </div>
+
+                <div class="form-groep">
+                    <label asp-for="Voornaam">Voornaam</label>
+                    <input asp-for="Voornaam"
+                           placeholder="Vul de voornaam in" />
+                    <span asp-validation-for="Voornaam"
+                          class="validatie-fout"></span>
+                </div>
+
+                <div class="form-groep">
+                    <label asp-for="Naam">Naam</label>
+                    <input asp-for="Naam"
+                           placeholder="Vul de familienaam in" />
+                    <span asp-validation-for="Naam"
+                          class="validatie-fout"></span>
+                </div>
+
+                <div class="form-groep">
+                    <label asp-for="Geboortedatum">Geboortedatum</label>
+                    <input asp-for="Geboortedatum"
+                           type="date" />
+                    <span asp-validation-for="Geboortedatum"
+                          class="validatie-fout"></span>
+                </div>
+
+                <div class="form-groep">
+                    <label asp-for="GeslachtId">Geslacht</label>
+                    <select asp-for="GeslachtId"
+                            asp-items="ViewBag.Geslachten">
+                        <option value="">Kies een geslacht</option>
+                    </select>
+                    <span asp-validation-for="GeslachtId"
+                          class="validatie-fout"></span>
+                </div>
+
+                <div class="form-knoppen">
+
+                    <a asp-controller="Kinderen"
+                       asp-action="Index"
+                       class="btn-annuleren">
+                        Annuleren
+                    </a>
+
+                    <button type="submit"
+                            class="btn-opslaan">
+                        Kind toevoegen
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

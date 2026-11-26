@@ -1,0 +1,374 @@
+﻿.kinderen-pagina {
+    max-width: 1050px;
+    margin: 35px auto 60px;
+    padding: 32px;
+    border: 1px solid #D8EAF2;
+    border-radius: 24px;
+    background: linear-gradient( 145deg, #E6F3FA 0%, #F1F8FB 55%, #E4F1F7 100% );
+    box-shadow: 0 18px 50px rgba(11, 31, 59, 0.08);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #0B1F3B;
+}
+
+
+/* Bovenkant */
+
+.kinderen-hero {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 38px;
+    border-radius: 18px;
+    background: linear-gradient( 120deg, #0B1F3B 0%, #10345C 65%, #14537A 100% );
+    box-shadow: 0 14px 28px rgba(11, 31, 59, 0.18);
+    color: #FFFFFF;
+}
+
+    .kinderen-hero::after {
+        content: "";
+        position: absolute;
+        right: -80px;
+        bottom: -190px;
+        width: 370px;
+        height: 370px;
+        border: 45px solid rgba(70, 226, 208, 0.08);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .kinderen-hero > div {
+        position: relative;
+        z-index: 1;
+    }
+
+    .kinderen-hero h1 {
+        margin: 0 0 12px;
+        color: #FFFFFF;
+        font-size: 38px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        line-height: 1.1;
+    }
+
+    .kinderen-hero p {
+        max-width: 500px;
+        margin: 0;
+        color: #B9CEDD;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+
+/* Knoppen */
+
+.kinderen-acties {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn-kinderen {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 11px 18px;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+
+/* Kind toevoegen */
+
+.btn-kinderen-primair {
+    border: 1px solid #1769E8;
+    background: #1769E8;
+    color: #FFFFFF;
+}
+
+    .btn-kinderen-primair:hover {
+        border-color: #1059CA;
+        background: #1059CA;
+        color: #FFFFFF;
+        transform: translateY(-1px);
+    }
+
+
+/* Bestaande zwemmer koppelen */
+
+.btn-kinderen-secundair {
+    border: 1px solid #46E2D0;
+    background: rgba(70, 226, 208, 0.08);
+    color: #FFFFFF;
+}
+
+    .btn-kinderen-secundair:hover {
+        border-color: #46E2D0;
+        background: #46E2D0;
+        color: #0B1F3B;
+        transform: translateY(-1px);
+    }
+
+
+/* Ontkoppelen */
+
+.btn-kinderen-ontkoppelen {
+    min-height: 40px;
+    padding: 9px 15px;
+    border: 1px solid #D96B6B;
+    background: #FFFFFF;
+    color: #B53F3F;
+}
+
+    .btn-kinderen-ontkoppelen:hover {
+        border-color: #B53F3F;
+        background: #FFF1F1;
+        color: #9E3030;
+    }
+
+
+/* Focus knoppen */
+
+.btn-kinderen:focus-visible {
+    outline: 3px solid #46E2D0;
+    outline-offset: 3px;
+}
+
+
+/* Meldingen */
+
+.melding {
+    margin-top: 22px;
+    padding: 14px 18px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.melding-succes {
+    border: 1px solid #46E2D0;
+    background: #E8FBF8;
+    color: #0B5C52;
+}
+
+.melding-fout {
+    border: 1px solid #E3A5A5;
+    background: #FFF1F1;
+    color: #9E3030;
+}
+
+
+/* Kinderenoverzicht */
+
+.kinderen-overzicht {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 22px;
+}
+
+
+/* Kaart van één kind */
+
+.kind-kaart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 25px;
+    padding: 25px;
+    border: 1px solid #DDEBF2;
+    border-radius: 16px;
+    background: #FFFFFF;
+    box-shadow: 0 12px 30px rgba(25, 69, 98, 0.09);
+    transition: background 0.2s ease;
+}
+
+    .kind-kaart:hover {
+        background: #F3F9FD;
+    }
+
+.kind-info {
+    flex: 1;
+    min-width: 0;
+}
+
+    .kind-info h3 {
+        margin: 0 0 8px;
+        overflow-wrap: anywhere;
+        color: #0B1F3B;
+        font-size: 16px;
+        font-weight: 700;
+    }
+
+    .kind-info p {
+        margin: 0 0 4px;
+        overflow-wrap: anywhere;
+        color: #60758A;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+        .kind-info p:last-of-type {
+            margin-bottom: 0;
+        }
+
+.kind-acties {
+    flex-shrink: 0;
+}
+
+
+/* Wedstrijden */
+
+.kind-wedstrijden {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #EDF2F5;
+}
+
+    .kind-wedstrijden h4 {
+        margin: 0 0 12px;
+        color: #0B1F3B;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+.wedstrijd-rij {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    border: 1px solid #DDEBF2;
+    border-radius: 10px;
+    background: #F8FCFE;
+}
+
+.wedstrijd-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+    .wedstrijd-info strong {
+        color: #0B1F3B;
+        font-size: 13px;
+    }
+
+    .wedstrijd-info span {
+        color: #60758A;
+        font-size: 12px;
+    }
+
+.wedstrijd-status {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #E6F3FA;
+    color: #14537A;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.wedstrijd-resultaat {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: -2px 0 10px;
+    padding: 8px 14px;
+    color: #60758A;
+    font-size: 12px;
+}
+
+.geen-wedstrijden {
+    margin-top: 15px;
+    padding-top: 14px;
+    border-top: 1px solid #EDF2F5;
+    color: #60758A;
+    font-size: 12px;
+}
+
+
+/* Geen kinderen */
+
+.geen-kinderen {
+    padding: 42px 25px;
+    border: 1px solid #DDEBF2;
+    border-radius: 16px;
+    background: #FFFFFF;
+    box-shadow: 0 12px 30px rgba(25, 69, 98, 0.09);
+    color: #60758A;
+    text-align: center;
+}
+
+    .geen-kinderen h3 {
+        margin: 0 0 8px;
+        color: #0B1F3B;
+        font-size: 15px;
+        font-weight: 700;
+    }
+
+    .geen-kinderen p {
+        margin: 0;
+        font-size: 13px;
+    }
+
+
+/* Mobiel */
+
+@media (max-width: 600px) {
+
+    .kinderen-pagina {
+        margin: 20px auto 40px;
+        padding: 16px;
+    }
+
+    .kinderen-hero {
+        padding: 27px;
+    }
+
+        .kinderen-hero h1 {
+            font-size: 30px;
+        }
+
+    .kinderen-acties {
+        width: 100%;
+        flex-direction: column;
+    }
+
+        .kinderen-acties .btn-kinderen {
+            width: 100%;
+        }
+
+    .kind-kaart {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .kind-acties {
+        width: 100%;
+    }
+
+    .btn-kinderen-ontkoppelen {
+        width: 100%;
+    }
+
+    .wedstrijd-rij {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .wedstrijd-status {
+        align-self: flex-start;
+    }
+}
