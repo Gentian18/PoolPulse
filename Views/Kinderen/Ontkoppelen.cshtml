@@ -1,0 +1,86 @@
+﻿@model Zwemclub.ViewModels.KindViewModel
+
+@{
+    ViewData["Title"] = "Kind ontkoppelen";
+}
+
+<div class="ontkoppelen-pagina">
+
+    <div class="ontkoppelen-container">
+
+        <div class="ontkoppelen-header">
+            <h1>Kind ontkoppelen</h1>
+            <p>
+                Controleer de gegevens voordat je de koppeling verwijdert.
+            </p>
+        </div>
+
+        <div class="ontkoppelen-kaart">
+
+            <div class="waarschuwing">
+                <h3>Weet je dit zeker?</h3>
+
+                <p>
+                    Je staat op het punt om
+                    <strong>@Model.Voornaam @Model.Naam</strong>
+                    van jouw account te ontkoppelen.
+                </p>
+            </div>
+
+            <div class="kind-gegevens">
+                <div class="gegeven">
+                    <span>Naam</span>
+                    <strong>@Model.Voornaam @Model.Naam</strong>
+                </div>
+
+                <div class="gegeven">
+                    <span>Geboortedatum</span>
+                    <strong>
+                        @(Model.Geboortedatum?.ToString("dd/MM/yyyy")
+                            ?? "Niet ingevuld")
+                    </strong>
+                </div>
+
+                <div class="gegeven">
+                    <span>Uniek nummer</span>
+                    <strong>@Model.UniekNummer</strong>
+                </div>
+            </div>
+
+            <p class="uitleg">
+                Het account van de zwemmer wordt niet verwijderd.
+                Alleen de koppeling met jouw account wordt verbroken.
+                Het unieke nummer blijft behouden zodat de zwemmer
+                later opnieuw gekoppeld kan worden.
+            </p>
+
+            <form asp-controller="Kinderen"
+                  asp-action="OntkoppelenBevestigd"
+                  method="post">
+
+                <input type="hidden"
+                       name="id"
+                       value="@Model.Id" />
+
+                <div class="ontkoppelen-acties">
+
+                    <a asp-controller="Kinderen"
+                       asp-action="Index"
+                       class="btn-annuleren">
+                        Annuleren
+                    </a>
+
+                    <button type="submit"
+                            class="btn-bevestigen">
+                        Ja, ontkoppelen
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>

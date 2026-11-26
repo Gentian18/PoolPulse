@@ -1,0 +1,132 @@
+﻿.kind-toevoegen-pagina {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #E6F3FA, #F1F8FB, #E4F1F7);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.kind-toevoegen-container {
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+.kind-toevoegen-header {
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #0B1F3B, #14537A);
+    color: white;
+}
+
+    .kind-toevoegen-header h1 {
+        margin: 0 0 10px;
+        font-size: 30px;
+    }
+
+    .kind-toevoegen-header p {
+        margin: 0;
+        color: #D8EAF2;
+    }
+
+.kind-toevoegen-formulier {
+    padding: 35px;
+    border: 1px solid #D8EAF2;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 0 5px 18px rgba(11, 31, 59, 0.08);
+}
+
+.form-groep {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+    .form-groep label {
+        color: #0B1F3B;
+        font-weight: bold;
+    }
+
+    .form-groep input,
+    .form-groep select {
+        width: 100%;
+        padding: 13px;
+        border: 1px solid #D8EAF2;
+        border-radius: 9px;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+        .form-groep input:focus,
+        .form-groep select:focus {
+            outline: 2px solid #46E2D0;
+            border-color: #46E2D0;
+        }
+
+.validatie-fout {
+    color: #d93025;
+    font-size: 13px;
+}
+
+.validatie-samenvatting {
+    color: #d93025;
+    margin-bottom: 15px;
+}
+
+.form-knoppen {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.btn-annuleren,
+.btn-opslaan {
+    padding: 13px 20px;
+    border: none;
+    border-radius: 9px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-annuleren {
+    background: #E6F3FA;
+    color: #0B1F3B;
+}
+
+.btn-opslaan {
+    background: #1769E8;
+    color: white;
+}
+
+    .btn-opslaan:hover {
+        background: #1059CA;
+    }
+
+.btn-annuleren:hover {
+    background: #D8EAF2;
+}
+
+@media (max-width: 600px) {
+    .kind-toevoegen-pagina {
+        padding: 20px 12px;
+    }
+
+    .kind-toevoegen-formulier {
+        padding: 22px;
+    }
+
+    .form-knoppen {
+        flex-direction: column-reverse;
+    }
+
+        .form-knoppen a,
+        .form-knoppen button {
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+}

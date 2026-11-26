@@ -1,0 +1,63 @@
+﻿@model Zwemclub.ViewModels.KindKoppelenViewModel
+
+@{
+    ViewData["Title"] = "Kind koppelen";
+}
+
+<div class="kinderen-pagina">
+    <div class="kinderen-formulier">
+
+        <h1>Kind koppelen</h1>
+
+        <p>
+            Vul de geboortedatum en het unieke nummer van de zwemmer in
+            om deze aan jouw account te koppelen.
+        </p>
+
+        <form asp-controller="Kinderen"
+              asp-action="Koppelen"
+              method="post">
+
+            @Html.AntiForgeryToken()
+
+            <div asp-validation-summary="ModelOnly"
+                 class="validatie-fout">
+            </div>
+
+            <div class="form-groep">
+                <label asp-for="Geboortedatum">Geboortedatum</label>
+
+                <input asp-for="Geboortedatum" type="date" />
+
+                <span asp-validation-for="Geboortedatum"
+                      class="validatie-fout">
+                </span>
+            </div>
+
+            <div class="form-groep">
+                <label asp-for="UniekNummer">Uniek nummer</label>
+
+                <input asp-for="UniekNummer"
+                       type="text"
+                       placeholder="Bijvoorbeeld ZC-0002" />
+
+                <span asp-validation-for="UniekNummer"
+                      class="validatie-fout">
+                </span>
+            </div>
+
+            <div class="formulier-knoppen">
+                <a asp-controller="Kinderen"
+                   asp-action="Index"
+                   class="btn-annuleren">
+                    Annuleren
+                </a>
+
+                <button type="submit" class="btn-kind-toevoegen">
+                    Zwemmer koppelen
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
