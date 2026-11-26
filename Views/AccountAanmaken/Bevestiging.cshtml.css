@@ -211,6 +211,23 @@
     justify-content: center;
 }
 
+.account-details {
+    display: grid;
+    grid-template-columns: minmax(120px, 1fr) 2fr;
+    gap: 10px 16px;
+    margin: 20px 0 28px;
+    text-align: left;
+}
+
+.account-details dt {
+    font-weight: 700;
+}
+
+.account-details dd {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
 /* Kleinere schermen */
 
 @media (max-width: 767px) {

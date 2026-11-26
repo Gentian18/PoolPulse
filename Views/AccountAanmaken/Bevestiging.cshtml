@@ -1,3 +1,5 @@
+@model Zwemclub.ViewModels.AccountBevestigingViewModel
+
 @{
     ViewData["Title"] = "Account aangemaakt";
 }
@@ -18,6 +20,17 @@
 
         <h2>Je account is aangemaakt</h2>
         <p>Je bent nu aangemeld. Welkom bij de zwemclub!</p>
+
+        <h3>Jouw gegevens</h3>
+        <dl class="account-details">
+            <dt>Voornaam</dt><dd>@Model.Voornaam</dd>
+            <dt>Achternaam</dt><dd>@Model.Naam</dd>
+            <dt>Geboortedatum</dt><dd>@Model.Geboortedatum?.ToString("dd/MM/yyyy")</dd>
+            <dt>Geslacht</dt><dd>@Model.Geslacht</dd>
+            <dt>E-mailadres</dt><dd>@Model.Emailadres</dd>
+            <dt>Telefoonnummer</dt><dd>@Model.Telefoonnummer</dd>
+            <dt>Rol</dt><dd>@Model.Rol</dd>
+        </dl>
 
         <div class="account-actions">
             <a asp-controller="Home"

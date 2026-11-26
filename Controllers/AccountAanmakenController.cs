@@ -133,14 +133,35 @@ namespace Zwemclub.Controllers
         }
 
         [HttpGet]
-        public IActionResult Bevestiging()
+        public async Task<IActionResult> Bevestiging()
         {
             if (TempData["AccountAangemaakt"] is not true)
             {
                 return RedirectToAction(nameof(Index));
             }
 
-            return View();
+            var gebruiker = await _userManager.GetUserAsync(User);
+            if (gebruiker == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            var geslacht = await _context.Geslachten
+                .Where(x => x.Id == gebruiker.GeslachtId)
+                .Select(x => x.Naam)
+                .FirstOrDefaultAsync();
+            var rollen = await _userManager.GetRolesAsync(gebruiker);
+
+            return View(new AccountBevestigingViewModel
+            {
+                Voornaam = gebruiker.Voornaam,
+                Naam = gebruiker.Naam,
+                Geboortedatum = gebruiker.Geboortedatum,
+                Geslacht = geslacht,
+                Emailadres = gebruiker.Email,
+                Telefoonnummer = gebruiker.PhoneNumber,
+                Rol = string.Join(", ", rollen)
+            });
         }
 
         private async Task VulGeslachtenAsync()
