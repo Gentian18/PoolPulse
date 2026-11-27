@@ -9,7 +9,12 @@
 </head>
 <body class="auth-body">
     <main class="auth-shell">
-        <aside class="auth-visual" aria-label="PoolPulse zwemclub">
+        <aside class="auth-visual" aria-label="PoolPulse zwemclub" data-auth-slider>
+            <div class="auth-slides" aria-hidden="true">
+                <img class="auth-slide is-active" src="~/images/fotos/zwembad.png" alt="" />
+                <img class="auth-slide" src="~/images/fotos/sfeer.png" alt="" />
+                <img class="auth-slide" src="~/images/fotos/podium.png" alt="" />
+            </div>
             <a class="auth-brand" asp-controller="Home" asp-action="Index" aria-label="PoolPulse, naar de homepagina">
                 <span class="auth-brand-mark"><img src="~/images/golven.svg" width="25" height="25" alt="" /></span>
                 <span>PoolPulse</span>
@@ -26,7 +31,14 @@
                 <p class="auth-eyebrow">@ViewData["AuthLabel"]</p>
                 <h2>@ViewData["AuthHeading"]</h2>
                 <p>@ViewData["AuthDescription"]</p>
-                <div class="auth-dashes" aria-hidden="true"><span></span><span></span><span></span></div>
+                <div class="auth-slider-controls" data-slider-controls hidden>
+                    <div class="auth-dashes" role="group" aria-label="Kies een foto">
+                        <button type="button" class="is-active" aria-label="Foto 1" aria-pressed="true"></button>
+                        <button type="button" aria-label="Foto 2" aria-pressed="false"></button>
+                        <button type="button" aria-label="Foto 3" aria-pressed="false"></button>
+                    </div>
+                    <button type="button" class="auth-slider-pause" data-slider-pause>Foto's pauzeren</button>
+                </div>
             </div>
         </aside>
         <div class="auth-content">

@@ -1,4 +1,49 @@
 (() => {
+    const slider = document.querySelector('[data-auth-slider]');
+    if (slider) {
+        const slides = Array.from(slider.querySelectorAll('.auth-slide'));
+        const controls = slider.querySelector('[data-slider-controls]');
+        const buttons = Array.from(slider.querySelectorAll('.auth-dashes button'));
+        const pauseButton = slider.querySelector('[data-slider-pause]');
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        let current = 0;
+        let paused = false;
+        let timer;
+
+        function showSlide(index) {
+            current = index;
+            slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+            buttons.forEach((button, i) => {
+                button.classList.toggle('is-active', i === index);
+                button.setAttribute('aria-pressed', String(i === index));
+            });
+        }
+
+        function schedule() {
+            window.clearInterval(timer);
+            pauseButton.hidden = reducedMotion.matches;
+            if (paused || reducedMotion.matches) return;
+            timer = window.setInterval(() => {
+                if (!document.hidden && !slider.matches(':hover') && !slider.contains(document.activeElement)) {
+                    showSlide((current + 1) % slides.length);
+                }
+            }, 6000);
+        }
+
+        buttons.forEach((button, index) => button.addEventListener('click', () => {
+            showSlide(index);
+            schedule();
+        }));
+        pauseButton.addEventListener('click', () => {
+            paused = !paused;
+            pauseButton.textContent = paused ? "Foto's afspelen" : "Foto's pauzeren";
+            schedule();
+        });
+        reducedMotion.addEventListener('change', schedule);
+        controls.hidden = false;
+        schedule();
+    }
+
     document.querySelectorAll('[data-password-toggle]').forEach((button) => {
         const input = document.getElementById(button.dataset.passwordToggle);
         if (!input) return;
