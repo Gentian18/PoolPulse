@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PoolPulse</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="auth-body">
+    <main class="auth-shell">
+        <aside class="auth-visual" aria-label="PoolPulse zwemclub" data-auth-slider>
+            <div class="auth-slides" aria-hidden="true">
+                <img class="auth-slide is-active" src="~/images/fotos/zwembad.png" alt="" />
+                <img class="auth-slide" src="~/images/fotos/sfeer.png" alt="" />
+                <img class="auth-slide" src="~/images/fotos/podium.png" alt="" />
+            </div>
+            <a class="auth-brand" asp-controller="Home" asp-action="Index" aria-label="PoolPulse, naar de homepagina">
+                <span class="auth-brand-mark"><img src="~/images/golven.svg" width="25" height="25" alt="" /></span>
+                <span>PoolPulse</span>
+            </a>
+            <svg class="auth-water" viewBox="0 0 700 600" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                <path d="M-30 165 C120 150 230 190 350 120 S590 10 730 20" />
+                <path d="M-30 225 C120 210 230 250 350 180 S590 70 730 80" />
+                <path d="M-30 285 C120 270 230 310 350 240 S590 130 730 140" />
+                <path d="M-30 345 C120 330 230 370 350 300 S590 190 730 200" />
+                <path d="M-30 405 C120 390 230 430 350 360 S590 250 730 260" />
+                <path d="M-30 465 C120 450 230 490 350 420 S590 310 730 320" />
+            </svg>
+            <div class="auth-visual-copy">
+                <p class="auth-eyebrow">@ViewData["AuthLabel"]</p>
+                <h2>@ViewData["AuthHeading"]</h2>
+                <p>@ViewData["AuthDescription"]</p>
+                <div class="auth-slider-controls" data-slider-controls hidden>
+                    <div class="auth-dashes" role="group" aria-label="Kies een foto">
+                        <button type="button" class="is-active" aria-label="Foto 1" aria-pressed="true"></button>
+                        <button type="button" aria-label="Foto 2" aria-pressed="false"></button>
+                        <button type="button" aria-label="Foto 3" aria-pressed="false"></button>
+                    </div>
+                    <button type="button" class="auth-slider-pause" data-slider-pause>Foto's pauzeren</button>
+                </div>
+            </div>
+        </aside>
+        <div class="auth-content">
+            @RenderBody()
+        </div>
+    </main>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/js/auth.js" asp-append-version="true" defer></script>
+</body>
+</html>
