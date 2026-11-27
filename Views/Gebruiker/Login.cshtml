@@ -1,39 +1,43 @@
 @model Zwemclub.ViewModels.LoginViewModel
 @{
     ViewData["Title"] = "Aanmelden";
+    Layout = "_AuthLayout";
+    ViewData["AuthLabel"] = "Fijn dat je er weer bent";
+    ViewData["AuthHeading"] = "Duik terug in het clubleven.";
+    ViewData["AuthDescription"] = "Je wedstrijden, je club en je team. Alles wat je nodig hebt, op één plek.";
 }
 
-<section class="login-pagina" aria-labelledby="login-titel">
-    <div class="login-hero">
-        <p class="login-label">Onze zwemclub</p>
-        <h1 id="login-titel">Aanmelden</h1>
-        <p class="login-omschrijving">Meld je aan met je e-mailadres en wachtwoord om naar je dashboard te gaan.</p>
-    </div>
+<section class="auth-form-panel" aria-labelledby="login-titel">
+    <p class="auth-eyebrow">Welkom terug</p>
+    <h1 id="login-titel">Fijn je weer te zien.</h1>
+    <p class="auth-intro">Nog geen account? <a asp-controller="AccountAanmaken" asp-action="Index">Schrijf je in</a></p>
 
-    <div class="login-paneel">
-        <form asp-controller="Gebruiker" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" method="post" novalidate>
-            <div asp-validation-summary="ModelOnly" class="login-fout" role="alert"></div>
+        <form asp-controller="Gebruiker" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" method="post" novalidate class="auth-form">
+            <div asp-validation-summary="ModelOnly" class="auth-validation-summary" role="alert"></div>
 
-            <div class="login-veld">
+            <div class="auth-field">
                 <label asp-for="Email"></label>
-                <input asp-for="Email" autocomplete="username" />
-                <span asp-validation-for="Email" class="login-veldfout"></span>
+                <input asp-for="Email" autocomplete="username" placeholder="naam@voorbeeld.be" />
+                <span asp-validation-for="Email" class="auth-validation"></span>
             </div>
 
-            <div class="login-veld">
+            <div class="auth-field">
                 <label asp-for="Wachtwoord"></label>
-                <input asp-for="Wachtwoord" autocomplete="current-password" />
-                <span asp-validation-for="Wachtwoord" class="login-veldfout"></span>
+                <div class="auth-password">
+                    <input asp-for="Wachtwoord" autocomplete="current-password" placeholder="Vul je wachtwoord in" />
+                    <button type="button" class="auth-password-toggle" data-password-toggle="Wachtwoord" aria-controls="Wachtwoord" aria-label="Wachtwoord tonen" aria-pressed="false" hidden>Tonen</button>
+                </div>
+                <span asp-validation-for="Wachtwoord" class="auth-validation"></span>
             </div>
 
-            <div class="login-onthoud">
+            <div class="auth-remember">
                 <input asp-for="Onthoud" />
                 <label asp-for="Onthoud"></label>
             </div>
 
-            <button type="submit" class="login-knop">Aanmelden</button>
+            <button type="submit" class="auth-button">Aanmelden <span aria-hidden="true">→</span></button>
         </form>
-    </div>
+    <p class="auth-help">Hulp nodig met aanmelden? <a asp-controller="Contact" asp-action="Index">Neem contact op met de club.</a></p>
 </section>
 
 @section Scripts {
