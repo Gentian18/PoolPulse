@@ -1,0 +1,27 @@
+@model Zwemclub.ViewModels.AccountVerwijderenViewModel
+@{
+    ViewData["Title"] = "Account verwijderen";
+}
+
+<div class="mijn-account">
+    <header class="mijn-account-header">
+        <p>Mijn account</p>
+        <h1>Account verwijderen</h1>
+    </header>
+    <section class="mijn-account-card">
+        <p>Je account wordt gedeactiveerd en je kunt niet meer aanmelden. De gekoppelde gegevens blijven in de database bewaard.</p>
+        <p>Vul je wachtwoord in om te bevestigen.</p>
+        <form asp-action="Verwijderen" method="post" class="mijn-account-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div><label asp-for="Wachtwoord" class="form-label"></label><input asp-for="Wachtwoord" class="form-control" autocomplete="current-password" /><span asp-validation-for="Wachtwoord" class="text-danger"></span></div>
+            <div class="d-flex flex-wrap gap-3 align-items-center mt-3">
+                <button type="submit" class="btn btn-danger">Account verwijderen</button>
+                <a asp-action="Index">Annuleren</a>
+            </div>
+        </form>
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

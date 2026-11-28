@@ -1,0 +1,32 @@
+@model Zwemclub.ViewModels.MijnAccountViewModel
+@{
+    ViewData["Title"] = "Mijn gegevens";
+}
+
+<div class="mijn-account">
+    <header class="mijn-account-header">
+        <p>Mijn account</p>
+        <h1>Mijn gegevens</h1>
+        <p>Bekijk en wijzig je persoonlijke gegevens.</p>
+    </header>
+    <section class="mijn-account-card">
+        @if (TempData["Melding"] is string melding)
+        {
+            <div class="alert alert-success" role="status">@melding</div>
+        }
+        <form asp-action="Index" method="post" class="mijn-account-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div><label asp-for="Voornaam" class="form-label"></label><input asp-for="Voornaam" class="form-control" /><span asp-validation-for="Voornaam" class="text-danger"></span></div>
+            <div><label asp-for="Naam" class="form-label"></label><input asp-for="Naam" class="form-control" /><span asp-validation-for="Naam" class="text-danger"></span></div>
+            <div><label asp-for="Geboortedatum" class="form-label"></label><input asp-for="Geboortedatum" type="date" class="form-control" /><span asp-validation-for="Geboortedatum" class="text-danger"></span></div>
+            <div><label asp-for="GeslachtId" class="form-label"></label><select asp-for="GeslachtId" asp-items="ViewBag.Geslachten" class="form-select"><option value="">Selecteer een geslacht</option></select><span asp-validation-for="GeslachtId" class="text-danger"></span></div>
+            <div><label asp-for="Emailadres" class="form-label"></label><input asp-for="Emailadres" class="form-control" /><span asp-validation-for="Emailadres" class="text-danger"></span></div>
+            <div><label asp-for="Telefoonnummer" class="form-label"></label><input asp-for="Telefoonnummer" class="form-control" /><span asp-validation-for="Telefoonnummer" class="text-danger"></span></div>
+            <div class="mt-3"><button type="submit" class="btn mijn-account-button">Wijzigingen opslaan</button></div>
+        </form>
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

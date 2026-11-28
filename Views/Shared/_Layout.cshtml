@@ -63,6 +63,16 @@
                             <a class="nav-link club-login @(isAanmelden ? "active" : "")" aria-current="@(isAanmelden ? "page" : null)"
                                asp-area="" asp-controller="Gebruiker" asp-action="Login">Aanmelden</a>
                         </li>
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item dropdown">
+                                <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Mijn account</button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" asp-controller="MijnAccount" asp-action="Index">Mijn gegevens</a></li>
+                                    <li><a class="dropdown-item text-danger" asp-controller="MijnAccount" asp-action="Verwijderen">Account verwijderen</a></li>
+                                </ul>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
