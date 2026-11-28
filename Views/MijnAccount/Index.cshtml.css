@@ -1,0 +1,11 @@
+.mijn-account { max-width: 1050px; margin: 35px auto 60px; padding: 32px; border: 1px solid #d8eaf2; border-radius: 24px; background: linear-gradient(145deg, #e6f3fa, #f1f8fb 55%, #e4f1f7); color: #0b1f3b; }
+.mijn-account-header { padding: 36px 40px; border-radius: 18px; background: linear-gradient(120deg, #0b1f3b, #10345c 65%, #14537a); color: white; }
+.mijn-account-header p:first-child { color: #46e2d0; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; }
+.mijn-account-header h1 { font-size: clamp(30px, 4vw, 42px); font-weight: 700; }
+.mijn-account-header p:last-child { margin-bottom: 0; }
+.mijn-account-card { max-width: 680px; margin: 24px auto 0; padding: 32px; border: 1px solid #ddebf2; border-radius: 16px; background: white; }
+.mijn-account-form { display: grid; gap: 18px; }
+.mijn-account-form label { font-weight: 700; }
+.mijn-account-button { background: #46e2d0; color: #0b1f3b; font-weight: 700; }
+.mijn-account-button:hover { background: #79eadd; color: #0b1f3b; }
+@media (max-width: 767px) { .mijn-account { margin: 20px auto 40px; padding: 16px; } .mijn-account-header, .mijn-account-card { padding: 24px; } }
